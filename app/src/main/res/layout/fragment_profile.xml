@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/activity_animated_view_scene"
+        tools:context=".main.profile.ProfileFragment">
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+    <com.jfsb.myvie.main.profile.TouchFrameLayout
+        android:id="@+id/flProfile"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@drawable/top_rounded_corners"
+        tools:layout_editor_absoluteY="791dp" />
+
+        <View
+            android:id="@+id/viewTitleBg"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primaryColor" />
+
+
+        <TextView
+            android:id="@+id/tvDetails"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Info de Activity"
+            android:textColor="@color/white"
+            android:background="@color/background"
+            app:layout_constraintTop_toBottomOf="@+id/viewTitleBg"
+            app:layout_constraintBottom_toTopOf="@+id/flProfile" />
+
+    <View
+        android:id="@+id/viewShadow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/ivProfile"
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/kotlin"
+            app:altSrc="@drawable/profile"
+            app:roundPercent="50" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="Encabezado"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/primaryColor"
+            android:textStyle="bold" />
+
+        <androidx.constraintlayout.utils.widget.ImageFilterButton
+            android:id="@+id/ifbThumbsUp"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:roundPercent="50"
+            android:background="@drawable/thumb_bg"
+            android:src="@drawable/ic_thumb_up" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>

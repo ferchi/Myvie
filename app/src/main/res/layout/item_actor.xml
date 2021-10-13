@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.animation.animpresseffect.PressEffectCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="130dp"
+    android:layout_height="170dp"
+    app:cardElevation="10dp"
+    app:button_duration="600"
+    app:button_scale="1"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="4dp"
+    android:backgroundTint="@color/background_gray"
+    android:background="@drawable/tv_background_border"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_actor_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/myvie_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tv_actor_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Name"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/civ_actor_profile"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.animation.animpresseffect.PressEffectCardView>

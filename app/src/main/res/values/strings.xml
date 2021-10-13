@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Myvie</string>
+    <string name="lorem">In mel saperet expetendis. Vitae urbanitas sadipscing nec ut, at vim quis lorem labitur. Exerci electram has et, vidit solet tincidunt quo ad,
+        moderatius contentiones nec no. Nam et puto abhorreant scripserit, et cum inimicus accusamus.</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

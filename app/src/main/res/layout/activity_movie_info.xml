@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/black"
+    app:layoutDescription="@xml/scene_profile">
+
+    <ImageView
+        android:id="@+id/iv_banner_movie"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="Banner de la pelicula"
+        android:src="@color/background"
+        app:layout_constraintBottom_toTopOf="@id/scrollView"
+        app:layout_constraintHeight_percent="1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:src="@color/white"
+        android:tag="avatar"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent=".28"
+        app:riv_corner_radius="8dp"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/icEdit"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/myvie_logo"
+        android:tag="edit"
+        android:visibility="invisible"
+        app:civ_border_color="@color/background"
+        app:civ_border_width="1dp"
+        app:civ_circle_background_color="@color/background"
+        app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+        app:layout_constraintDimensionRatio="1"
+        app:layout_constraintEnd_toEndOf="@id/ivAvatar"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintTop_toTopOf="@id/ivAvatar"
+        app:layout_constraintWidth_percent=".10" />
+
+    <TextView
+        android:id="@+id/tv_name_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:textStyle="bold"
+        android:background="@drawable/tv_background"
+        android:padding="3dp"
+        android:text="Nombre de pelicula"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/tv_year_banner"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_year_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/tv_background"
+        android:padding="3dp"
+        android:text="Año"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_banner" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/tv_background"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:tag="name"
+        android:text="Nombre de pelicula (Año)"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/ivAvatar"
+        app:layout_goneMarginBottom="40dp"
+        tools:layout_editor_absoluteX="60dp" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvName">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/tvName">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/flProfile"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:background="@drawable/top_rounded_corners"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/ly_genres"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_director"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Director"
+                            android:textColor="@color/white"
+                            android:textSize="16dp"
+                            android:padding="4dp"
+                            android:background="@drawable/tv_background"
+                            />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_genres"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            />
+
+                        <com.ms.square.android.expandabletextview.ExpandableTextView
+                            android:id="@+id/expand_text_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            expandableTextView:animDuration="100"
+                            expandableTextView:maxCollapsedLines="5">
+
+                            <!-- simple text view  -->
+                            <TextView
+                                android:id="@id/expandable_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:textColor="#666666"
+                                android:textSize="16sp" />
+
+                            <!-- expandable ImageButton -->
+                            <ImageButton
+                                android:id="@id/expand_collapse"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|bottom"
+                                android:background="@android:color/transparent" />
+
+                        </com.ms.square.android.expandabletextview.ExpandableTextView>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cast"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:paddingTop="8dp"
+                            />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_actors"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="8dp"
+                            />
+                    </LinearLayout>
+
+                </ScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.motion.widget.MotionLayout>
