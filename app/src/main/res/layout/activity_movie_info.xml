@@ -34,6 +34,19 @@
         app:riv_corner_radius="8dp"
         />
 
+    <RatingBar
+        android:id="@+id/movie_rating"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+        app:layout_constraintEnd_toEndOf="@+id/ivAvatar"
+        app:layout_constraintStart_toStartOf="@+id/ivAvatar"
+        android:progressTint="@color/white"
+        android:background="@drawable/tv_background"
+        />
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/icEdit"
         android:layout_width="120dp"
@@ -85,7 +98,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_name_banner" />
 
-
+    <RatingBar
+        android:id="@+id/movie_rating_banner"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:progressTint="@color/white"
+        android:background="@drawable/tv_background"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/tv_year_banner"
+        />
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
@@ -111,22 +136,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvName">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/tvName">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/flProfile"
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
                 android:background="@drawable/top_rounded_corners"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                >
 
                 <ScrollView
                     android:layout_width="match_parent"
@@ -145,16 +160,38 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tv_director"
+                        <com.animation.animpresseffect.PressEffectCardView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Director"
-                            android:textColor="@color/white"
-                            android:textSize="16dp"
-                            android:padding="4dp"
-                            android:background="@drawable/tv_background"
-                            />
+                            android:elevation="6dp"
+                            app:cardUseCompatPadding="true"
+                            android:backgroundTint="@android:color/transparent"
+                            app:button_duration="600"
+                            app:button_scale="0.5"
+                            >
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:padding="4dp"
+                                >
+                                <TextView
+                                    android:id="@+id/tv_director"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/tv_background"
+                                    android:padding="4dp"
+                                    android:text="Director"
+                                    android:textColor="@color/white"
+                                    android:textSize="16dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        </com.animation.animpresseffect.PressEffectCardView>
+
+
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_genres"
@@ -196,7 +233,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Cast"
+                            android:text="Elenco"
                             android:textColor="@color/white"
                             android:textSize="20dp"
                             android:textStyle="bold"
@@ -208,11 +245,23 @@
                             android:layout_height="wrap_content"
                             android:paddingTop="8dp"
                             />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="Similares"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:paddingTop="8dp"/>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_similares"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="8dp"/>
                     </LinearLayout>
 
                 </ScrollView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.motion.widget.MotionLayout>

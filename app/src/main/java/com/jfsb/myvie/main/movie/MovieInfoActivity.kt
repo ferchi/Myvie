@@ -24,6 +24,10 @@ class MovieInfoActivity : AppCompatActivity() {
     private lateinit var actorsLayoutMgr: LinearLayoutManager
     private lateinit var actorsAdapter: ActorAdapter
 
+    private lateinit var similarsLayoutMgr: LinearLayoutManager
+    private lateinit var similarsAdapter: MoviesAdapter
+    private var similarsMoviesPage = 1
+
     private var movieId:Long = 0
 
 
@@ -53,10 +57,22 @@ class MovieInfoActivity : AppCompatActivity() {
             false
         )
 
+        similarsLayoutMgr = LinearLayoutManager(
+            this,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
+
         binding.rvGenres.layoutManager = genresLayoutMgr
-
         binding.rvActors.layoutManager = actorsLayoutMgr
+        binding.rvSimilares.layoutManager = similarsLayoutMgr
 
+        getSimilars()
+
+        binding.ivAvatar.setOnClickListener {
+            getTrailers()
+
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -85,6 +101,8 @@ class MovieInfoActivity : AppCompatActivity() {
         val expTv = binding.expandTextView
         expTv.text = binding.expandableText.text.toString()
         binding.tvName.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+        binding.movieRating.rating = extras.getFloat(MOVIE_RATING, 0f) / 2
+        binding.movieRatingBanner.rating = extras.getFloat(MOVIE_RATING, 0f) / 2
 
         val genres = extras.getStringArrayList(MOVIE_GENRES)
         var genresS : ArrayList<String>? = ArrayList()
@@ -95,6 +113,8 @@ class MovieInfoActivity : AppCompatActivity() {
         genresAdapter = GenreAdapter(genresS)
         binding.rvGenres.adapter = genresAdapter
 
+        similarsAdapter = MoviesAdapter(mutableListOf()){ movie ->Utils.showMovieDetails(movie,this)}
+        binding.rvSimilares.adapter = similarsAdapter
 
 
         movieId = extras.getLong(MOVIE_ID,0)
@@ -109,6 +129,23 @@ class MovieInfoActivity : AppCompatActivity() {
         )
     }
 
+    private fun getSimilars() {
+        MoviesRepository.getRecommendations(
+            similarsMoviesPage,
+            movieId,
+            ::onSimilarMoviesFetched,
+            ::onError
+        )
+    }
+
+    private fun getTrailers() {
+        MoviesRepository.getTrailers(
+            movieId,
+            ::onTrailersFetched,
+            ::onError
+        )
+    }
+
     private fun onGetCreditsMovieFetched(cast: List<Cast>, crew: List<Crew>) {
         crew.forEach { crewItem ->
             //Log.d("JOB", "JOB: "+crewItem.jobCrew)
@@ -116,18 +153,32 @@ class MovieInfoActivity : AppCompatActivity() {
                 binding.tvDirector.text = crewItem.nameCrew
             }
         }
-        cast.forEach { castItem ->
-            Log.d("cast", "actor: "+castItem.nameCast)
-        }
 
         actorsAdapter = ActorAdapter(mutableListOf()){ actor -> showActorDetails(actor) }
         actorsAdapter.appendActors(cast)
         binding.rvActors.adapter = actorsAdapter
         attachActorsOnScrollListener()
     }
+    private fun onSimilarMoviesFetched(movies: List<MovieResponse>) {
 
-    private fun onError(){
-        Toast.makeText(this,"Error de conexión", Toast.LENGTH_SHORT)
+        /*movies.forEach { movie ->
+            Log.d("movie", "title: "+movie.title)
+        }*/
+        similarsAdapter.appendMovies(movies)
+        attachSimilarsMoviesOnScrollListener()
+    }
+
+    private fun onTrailersFetched(trailers: List<Trailer>) {
+
+        trailers.forEach { trailer ->
+            DialogTrailerPlayer(trailer.linkTrailer).show(supportFragmentManager, "TRAILER")
+            //Log.d("trailer", "https://www.youtube.com/watch?v="+trailer.linkTrailer)
+        }
+
+    }
+
+    private fun onError(error:String = ""){
+        Toast.makeText(this,error, Toast.LENGTH_SHORT).show()
     }
 
     private fun showActorDetails(actor: Cast) {
@@ -144,6 +195,22 @@ class MovieInfoActivity : AppCompatActivity() {
                 if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
                     binding.rvActors.removeOnScrollListener(this)
                     getCreditsMovie()
+                }
+            }
+        })
+    }
+
+    private fun attachSimilarsMoviesOnScrollListener() {
+        binding.rvSimilares.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val totalItemCount = similarsLayoutMgr.itemCount
+                val visibleItemCount = similarsLayoutMgr.childCount
+                val firstVisibleItem = similarsLayoutMgr.findFirstVisibleItemPosition()
+
+                if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
+                    binding.rvSimilares.removeOnScrollListener(this)
+                    similarsMoviesPage++
+                    getSimilars()
                 }
             }
         })

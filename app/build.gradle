@@ -95,4 +95,9 @@ dependencies {
     //Anim Press Effect
     implementation 'com.github.saurabhdhillon:anim-press-view:0.0.1'
 
+    //Youtube Player
+    implementation fileTree(dir: "libs", include: ["YouTubeAndroidPlayerApi.jar"])
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.3'
+
+
 }

@@ -1,5 +1,6 @@
 package com.jfsb.myvie.api
 
+import android.util.Log
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,7 +20,7 @@ object MoviesRepository {
         api = retrofit.create(APIService::class.java)
     }
 
-    fun getPopularMovies(
+    fun getMoviesList(
         page: Int = 1,
         onSuccess: (movies: List<MovieResponse>) -> Unit,
         onError: () -> Unit
@@ -129,9 +130,67 @@ object MoviesRepository {
                         onError.invoke()
                     }
                 }
-
                 override fun onFailure(call: Call<GetCreditsResponse>, t: Throwable) {
 
+                }
+            })
+    }
+
+    fun getRecommendations(
+        page: Int = 1,
+        movieId: Long = 0,
+        onSuccess: (movies: List<MovieResponse>) -> Unit,
+        onError: () -> Unit
+    ) {
+        api.getRecommendations(page = page, movieId = movieId)
+            .enqueue(object : Callback<GetMoviesResponse> {
+                override fun onResponse(
+                    call: Call<GetMoviesResponse>,
+                    response: Response<GetMoviesResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+
+                        if (responseBody != null) {
+                            onSuccess.invoke(responseBody.movies)
+                        } else {
+                            onError.invoke()
+                        }
+                    } else {
+                        onError.invoke()
+                    }
+                }
+                override fun onFailure(call: Call<GetMoviesResponse>, t: Throwable) {
+                    onError.invoke()
+                }
+            })
+    }
+
+    fun getTrailers(
+        movieId: Long = 0,
+        onSuccess: (trailers: List<Trailer>) -> Unit,
+        onError: (error:String) -> Unit
+    ) {
+        api.getTrailers(movieId = movieId)
+            .enqueue(object : Callback<GetTrailersResponse> {
+                override fun onResponse(
+                    call: Call<GetTrailersResponse>,
+                    response: Response<GetTrailersResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+
+                        if (responseBody != null) {
+                            onSuccess.invoke(responseBody.trailers)
+                        } else {
+                            onError.invoke("Null")
+                        }
+                    } else {
+                        onError.invoke("Error")
+                    }
+                }
+                override fun onFailure(call: Call<GetTrailersResponse>, t: Throwable) {
+                    onError.invoke("No Disponible")
                 }
             })
     }

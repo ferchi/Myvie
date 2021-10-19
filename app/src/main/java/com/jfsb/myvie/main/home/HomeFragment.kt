@@ -12,16 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.api.MovieResponse
 import com.jfsb.myvie.main.movie.MoviesAdapter
 import com.jfsb.myvie.api.MoviesRepository
+import com.jfsb.myvie.api.Utils.showMovieDetails
 import com.jfsb.myvie.databinding.FragmentHomeBinding
 import com.jfsb.myvie.main.movie.MovieInfoActivity
-import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_BACKDROP
-import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_GENRES
-import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_ID
-import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_OVERVIEW
-import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_POSTER
-import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_RATING
-import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_RELEASE_DATE
-import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_TITLE
 import java.util.ArrayList
 
 
@@ -45,7 +38,7 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        MoviesRepository.getPopularMovies(
+        MoviesRepository.getMoviesList(
             onSuccess = ::onPopularMoviesFetched,
             onError = ::onError
         )
@@ -91,15 +84,15 @@ class HomeFragment : Fragment() {
         )
 
         binding.popularMovies.layoutManager = popularMoviesLayoutMgr
-        popularMoviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie) }
+        popularMoviesAdapter = MoviesAdapter(mutableListOf()) { movie -> showMovieDetails(movie, requireContext()) }
         binding.popularMovies.adapter = popularMoviesAdapter
 
         binding.newMovies.layoutManager = newMoviesLayoutMgr
-        newMoviesAdapter = MoviesAdapter(mutableListOf()){ movie -> showMovieDetails(movie) }
+        newMoviesAdapter = MoviesAdapter(mutableListOf()){ movie -> showMovieDetails(movie, requireContext()) }
         binding.newMovies.adapter = newMoviesAdapter
 
         binding.topMovies.layoutManager = topMoviesLayoutMgr
-        topMoviesAdapter = MoviesAdapter(mutableListOf()){ movie -> showMovieDetails(movie) }
+        topMoviesAdapter = MoviesAdapter(mutableListOf()){ movie -> showMovieDetails(movie, requireContext()) }
         binding.topMovies.adapter = topMoviesAdapter
 
         getPopularMovies()
@@ -107,14 +100,14 @@ class HomeFragment : Fragment() {
         getTopMovies()
     }
     private fun getPopularMovies() {
-        MoviesRepository.getPopularMovies(
+        MoviesRepository.getMoviesList(
             popularMoviesPage,
             ::onPopularMoviesFetched,
             ::onError
         )
     }
     private fun getNewMovies() {
-        MoviesRepository.getPopularMovies(
+        MoviesRepository.getMoviesList(
             newMoviesPage,
             ::onNewMoviesFetched,
             ::onError
@@ -190,17 +183,4 @@ class HomeFragment : Fragment() {
         Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
     }
 
-    private fun showMovieDetails(movie: MovieResponse) {
-        val intent = Intent(requireContext(), MovieInfoActivity::class.java)
-        intent.putExtra(MOVIE_BACKDROP, movie.backdropPath)
-        intent.putExtra(MOVIE_POSTER, movie.posterPath)
-        intent.putExtra(MOVIE_TITLE, movie.title)
-        intent.putExtra(MOVIE_RATING, movie.rating)
-        intent.putExtra(MOVIE_RELEASE_DATE, movie.releaseDate)
-        intent.putExtra(MOVIE_OVERVIEW, movie.overview)
-        intent.putStringArrayListExtra(MOVIE_GENRES, movie.genresIds as ArrayList<String>?)
-        intent.putExtra(MOVIE_ID, movie.id)
-
-        startActivity(intent)
-    }
 }

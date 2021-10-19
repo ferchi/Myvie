@@ -40,6 +40,33 @@
             motion:layout_constraintTop_toBottomOf="@+id/tv_name_banner"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp" />
+
+        <Constraint
+            android:id="@+id/movie_rating_banner"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:progressTint="@color/white"
+            android:background="@drawable/tv_background"
+            android:visibility="invisible"
+            motion:layout_constraintTop_toBottomOf="@+id/tv_year_banner"
+            />
+
+        <Constraint
+            android:id="@+id/movie_rating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            motion:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+            motion:layout_constraintEnd_toEndOf="@+id/ivAvatar"
+            motion:layout_constraintStart_toStartOf="@+id/ivAvatar"
+            android:progressTint="@color/white"
+            android:background="@drawable/tv_background"
+            />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -99,6 +126,34 @@
             motion:layout_constraintEnd_toEndOf="@+id/iv_banner_movie"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp" />
+
+        <Constraint
+            android:id="@+id/movie_rating_banner"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:progressTint="@color/white"
+            android:background="@drawable/tv_background"
+            android:visibility="visible"
+            motion:layout_constraintTop_toBottomOf="@+id/tv_year_banner"
+            />
+
+        <Constraint
+            android:id="@+id/movie_rating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+            motion:layout_constraintEnd_toEndOf="@+id/ivAvatar"
+            motion:layout_constraintStart_toStartOf="@+id/ivAvatar"
+            android:progressTint="@color/white"
+            android:background="@drawable/tv_background"
+            />
 
         <Constraint android:id="@+id/scrollView" />
     </ConstraintSet>

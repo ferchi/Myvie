@@ -40,6 +40,17 @@
             app:srcCompat="@drawable/ic_eye_24"
             app:striked="true" />
 
+        <RatingBar
+            android:id="@+id/ratingBar_movie_poster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/ratingBarStyleSmall"
+            android:background="@drawable/tv_background"
+            android:progressTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/item_movie_poster"
+            app:layout_constraintEnd_toEndOf="@+id/item_movie_poster"
+            app:layout_constraintStart_toStartOf="@+id/item_movie_poster"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
