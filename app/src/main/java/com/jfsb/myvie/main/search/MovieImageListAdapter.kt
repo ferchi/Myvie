@@ -58,6 +58,7 @@ class MovieImageListAdapter (private val movies: MutableList<Movie>,
         holder.binding.tvItemMovieRankingImage.text = ((movie.rating/2).toString() + "/5")
         holder.binding.tvItemMovieDurationImage.text = durationS
         holder.binding.cardItemMovieContainerImage.setOnClickListener { onMovieClick.invoke(movie) }
+        holder.binding.moviePosterContainer.setOnClickListener { onMovieClick.invoke(movie) }
 
         if(holder.adapterPosition > lastPosition){
             holder.binding.cardItemMovieContainerImage.startAnimation(animation)

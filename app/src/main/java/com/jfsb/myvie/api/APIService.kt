@@ -71,4 +71,11 @@ interface APIService {
         @Query("api_key") apiKey: String = "d51156038b94f2f43784a91dd97ef46d",
         @Query("language") language: String = "es-MX"
     ):Call<SearchPeopleResponse>
+
+    @GET("person/{person_id}/movie_credits")
+    fun getPeopleMovies(
+        @Path("person_id") peopleId: Int,
+        @Query("api_key") apiKey: String = "d51156038b94f2f43784a91dd97ef46d",
+        @Query("language") language: String = "es-MX"
+    ):Call<GetPeopleMoviesResponse>
 }

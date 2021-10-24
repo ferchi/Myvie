@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.animation.animpresseffect.PressEffectCardView
+import com.animation.animpresseffect.PressEffectContainerLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.jfsb.myvie.R
@@ -43,6 +46,7 @@ class ActorAdapter (
 
         private val poster: CircleImageView = itemView.findViewById(R.id.civ_actor_profile)
         private val tvActorName: TextView = itemView.findViewById(R.id.tv_actor_name)
+        private val container: PressEffectCardView = itemView.findViewById(R.id.actor_container)
 
         fun bind(actor: Cast) {
             Glide.with(itemView)
@@ -53,7 +57,7 @@ class ActorAdapter (
             Log.d("imagen", "https://image.tmdb.org/t/p/w342${actor.profilePath}")
             tvActorName.text = actor.nameCast
 
-            itemView.setOnClickListener { onActorClick.invoke(actor) }
+            container.setOnClickListener { onActorClick.invoke(actor) }
         }
 
     }

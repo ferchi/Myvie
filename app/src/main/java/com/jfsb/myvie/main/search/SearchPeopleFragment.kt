@@ -54,7 +54,7 @@ class SearchActorFragment : Fragment(), SearchView.OnQueryTextListener, MovieTex
         binding.svPeople.setOnQueryTextListener(this)
 
         binding.rvSearchPeople.layoutManager = searchLayoutMgr
-        peopleTextAdapter = PeopleTextListAdapter(mutableListOf()){ people -> Utils.showPeopleDetails(people, requireContext()) }
+        peopleTextAdapter = PeopleTextListAdapter(mutableListOf()){ people -> Utils.showPeopleDetails(people.idPeople, people.namePeople, requireActivity()) }
         binding.rvSearchPeople.adapter = peopleTextAdapter
 
         binding.ivSearchPeopleMode.setOnClickListener {
@@ -78,7 +78,7 @@ class SearchActorFragment : Fragment(), SearchView.OnQueryTextListener, MovieTex
 
         if(isTextMode)
         {
-            peopleTextAdapter = PeopleTextListAdapter(mutableListOf()){ people -> Utils.showPeopleDetails(people, requireContext()) }
+            peopleTextAdapter = PeopleTextListAdapter(mutableListOf()){ people -> Utils.showPeopleDetails(people.idPeople, people.namePeople, requireActivity()) }
             binding.rvSearchPeople.adapter = peopleTextAdapter
 
             if(!binding.svPeople.query.isNullOrEmpty()) {
@@ -90,7 +90,7 @@ class SearchActorFragment : Fragment(), SearchView.OnQueryTextListener, MovieTex
         }
         else
         {
-           peopleImageAdapter = PeopleImageListAdapter(mutableListOf()){people -> Utils.showPeopleDetails(people, requireContext()) }
+           peopleImageAdapter = PeopleImageListAdapter(mutableListOf()){people -> Utils.showPeopleDetails(people.idPeople, people.namePeople, requireActivity()) }
             binding.rvSearchPeople.adapter = peopleImageAdapter
 
             if(!binding.svPeople.query.isNullOrEmpty()) {

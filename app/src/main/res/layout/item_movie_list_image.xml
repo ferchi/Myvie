@@ -5,13 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/riv_movie_poster"
+    <com.animation.animpresseffect.PressEffectContainerLayout
+        android:id="@+id/movie_poster_container"
         android:layout_width="0dp"
         android:layout_height="154dp"
-        app:riv_border_color="@color/primaryColor"
-        app:riv_corner_radius="8dp"
-        android:src="@mipmap/logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_weight="0.3"
@@ -19,8 +16,17 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_gravity="center"
-        android:translationZ="90dp"
-        />
+        android:translationZ="90dp">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:riv_border_color="@color/primaryColor"
+            app:riv_corner_radius="8dp"
+            android:src="@mipmap/logo"
+            />
+    </com.animation.animpresseffect.PressEffectContainerLayout>
+
 <com.animation.animpresseffect.PressEffectCardView
     android:id="@+id/card_item_movie_container_image"
     android:layout_width="0dp"
@@ -43,28 +49,20 @@
         android:layout_height="match_parent"
         android:padding="8dp">
 
-        <HorizontalScrollView
-            android:id="@+id/hsv_tv_item_name"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_item_movie_name_image"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Nombre de pelicula"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:singleLine="false"
+            android:maxEms="10"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/tv_item_movie_duration_image"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/tv_item_movie_name_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre de pelicula"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:singleLine="false"
-                android:maxEms="10"/>
-
-        </HorizontalScrollView>
+            app:layout_constraintTop_toTopOf="parent"/>
         <TextView
             android:id="@+id/tv_item_movie_gender_image"
             android:layout_width="wrap_content"
@@ -73,7 +71,7 @@
             android:textColor="@color/white"
             android:singleLine="false"
             android:maxEms="14"
-            app:layout_constraintTop_toBottomOf="@+id/hsv_tv_item_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_movie_name_image"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"/>

@@ -35,7 +35,6 @@ class MovieInfoActivity : AppCompatActivity() {
     private var movieId:Long = 0
 
 
-    @ExperimentalTime
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -110,6 +109,7 @@ class MovieInfoActivity : AppCompatActivity() {
         binding.movieRating.rating = extras.getFloat(MOVIE_RATING, 0f) / 2
         binding.movieRatingBanner.rating = extras.getFloat(MOVIE_RATING, 0f) / 2
 
+
         val genres = extras.getStringArrayList(MOVIE_GENRES)
         var genresS : ArrayList<String>? = ArrayList()
         genres?.forEach {
@@ -169,7 +169,7 @@ class MovieInfoActivity : AppCompatActivity() {
             }
         }
 
-        actorsAdapter = ActorAdapter(mutableListOf()){ actor -> showActorDetails(actor) }
+        actorsAdapter = ActorAdapter(mutableListOf()){ actor -> Utils.showPeopleDetails(actor.idCast.toInt(), actor.nameCast, this) }
         actorsAdapter.appendActors(cast)
         binding.rvActors.adapter = actorsAdapter
         attachActorsOnScrollListener()

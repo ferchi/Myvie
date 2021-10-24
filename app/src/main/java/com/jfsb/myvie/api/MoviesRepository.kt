@@ -283,4 +283,33 @@ object MoviesRepository {
                 }
             })
     }
+
+    fun getPeopleMovies(
+        peopleId: Int,
+        onSuccess: (castCredits: List<Movie>, crewCredits: List<Movie>) -> Unit,
+        onError: () -> Unit
+    ){
+        api.getPeopleMovies(peopleId)
+            .enqueue(object : Callback<GetPeopleMoviesResponse>{
+                override fun onResponse(
+                    call: Call<GetPeopleMoviesResponse>,
+                    response: Response<GetPeopleMoviesResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+
+                        if (responseBody != null) {
+                            onSuccess.invoke(responseBody.castCredits, responseBody.crewCredits)
+                        } else {
+                            onError.invoke()
+                        }
+                    } else {
+                        onError.invoke()
+                    }
+                }
+                override fun onFailure(call: Call<GetPeopleMoviesResponse>, t: Throwable) {
+
+                }
+            })
+    }
 }

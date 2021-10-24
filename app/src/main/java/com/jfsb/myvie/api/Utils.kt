@@ -3,6 +3,7 @@ package com.jfsb.myvie.api
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jfsb.myvie.main.movie.MovieInfoActivity
@@ -16,6 +17,14 @@ import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_POSTER
 import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_RATING
 import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_RELEASE_DATE
 import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_TITLE
+import com.jfsb.myvie.main.people.PeopleMoviesDialog
+import com.google.android.youtube.player.internal.f
+
+import android.os.Bundle
+import androidx.fragment.app.FragmentActivity
+import com.jfsb.myvie.main.people.PeopleMoviesDialog.Companion.PEOPLE_ID
+import com.jfsb.myvie.main.people.PeopleMoviesDialog.Companion.PEOPLE_NAME
+
 
 object Utils {
      fun showMovieDetails(movie: Movie, context: Context) {
@@ -57,7 +66,28 @@ object Utils {
       return "NINGUNO"
    }
 
-   fun showPeopleDetails(people: People, context: Context) {
+   fun showPeopleDetails(idPeople: Int, namePeople:String, context: FragmentActivity) {
+      val peopleMoviesDialog = PeopleMoviesDialog()
+      val args = Bundle()
+
+      args.putInt(PEOPLE_ID, idPeople)
+      args.putString(PEOPLE_NAME, namePeople)
+
+      peopleMoviesDialog.arguments = args
+
+      peopleMoviesDialog.show(context.supportFragmentManager, "Crear")
+   }
+
+   fun showPeopleDetails(idPeople: Int, namePeople:String, context: AppCompatActivity) {
+      val peopleMoviesDialog = PeopleMoviesDialog()
+      val args = Bundle()
+
+      args.putInt(PEOPLE_ID, idPeople)
+      args.putString(PEOPLE_NAME, namePeople)
+
+      peopleMoviesDialog.arguments = args
+
+      peopleMoviesDialog.show(context.supportFragmentManager, "Crear")
    }
 
    class GridLayoutManagerWrapper : GridLayoutManager {
