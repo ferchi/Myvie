@@ -2,8 +2,6 @@ package com.jfsb.myvie.api
 
 import android.content.Context
 import android.content.Intent
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import com.jfsb.myvie.main.movie.MovieInfoActivity
 import java.util.ArrayList
 
@@ -17,7 +15,7 @@ import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_RELEASE_DATE
 import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_TITLE
 
 object Utils {
-     fun showMovieDetails(movie: MovieResponse, context: Context) {
+     fun showMovieDetails(movie: Movie, context: Context) {
         val intent = Intent(context, MovieInfoActivity::class.java)
         intent.putExtra(MOVIE_BACKDROP, movie.backdropPath)
         intent.putExtra(MOVIE_POSTER, movie.posterPath)
@@ -30,5 +28,32 @@ object Utils {
 
         context.startActivity(intent)
     }
+
+   fun getGenre(index:String):String{
+      when(index){
+         "28"-> return "Acción"
+         "12"-> return "Aventura"
+         "16"->return "Animación"
+         "35"->return "Comedia"
+         "80"->return "Crimen"
+         "99"->return "Documental"
+         "18"->return "Drama"
+         "10751"->return "Familia"
+         "14"->return "Fantasía"
+         "36"->return "Historia"
+         "27"->return "Terror"
+         "10402"->return "Música"
+         "9648"->return "Misterio"
+         "10749"->return "Romance"
+         "878"->return "Ciencia ficción"
+         "10770"->return "Película de TV"
+         "53"->return "Suspense"
+         "10752"->return "Bélica"
+         "37"-> return "Western"
+      }
+      return "NINGUNO"
+   }
+
+
 
 }

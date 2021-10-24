@@ -30,6 +30,9 @@ class DialogTrailerPlayer(linkTrailer:String) : DialogFragment(){
             _binding = LayoutTrailerPlayerBinding.inflate(LayoutInflater.from(context))
             alertBuilder.setView(binding.root)
 
+            lifecycle.addObserver(binding.plTrailer)
+            binding.plTrailer.getPlayerUiController()
+
             binding.plTrailer.addYouTubePlayerListener(object :
                 AbstractYouTubePlayerListener() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
@@ -51,6 +54,10 @@ class DialogTrailerPlayer(linkTrailer:String) : DialogFragment(){
 
 
         } ?: throw IllegalStateException("Exception !! Activity is null")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
 }

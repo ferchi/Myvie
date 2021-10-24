@@ -9,7 +9,8 @@
     android:backgroundTint="@color/gray"
     app:button_duration="600"
     app:button_scale="0.5"
-    app:cardElevation="4dp"
+    app:cardElevation="6dp"
+    app:cardCornerRadius="10dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         navController = findNavController(R.id.main_fragment)
-        setupActionBarWithNavController(navController)
+        //setupActionBarWithNavController(navController)
         setupSmoothBottomMenu()
     }
 

@@ -13,46 +13,46 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
+            android:id="@+id/tv_name_banner"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="18dp"
             motion:layout_constraintTop_toTopOf="parent"
             android:layout_width="wrap_content"
-            android:id="@+id/tv_name_banner"
             android:visibility="invisible"
             android:text="Nombre de pelicula (Año)"
-            motion:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" />
+            motion:layout_constraintStart_toEndOf="@+id/ivAvatar"
+            android:layout_marginStart="8dp" />
         <Constraint
+            android:id="@+id/tvName"
             motion:layout_goneMarginBottom="40dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             motion:layout_constraintTop_toBottomOf="@id/ivAvatar"
-            android:id="@+id/tvName"
             motion:layout_constraintStart_toStartOf="parent" />
         <Constraint
-            android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="@+id/iv_banner_movie"
-            android:layout_width="wrap_content"
             android:id="@+id/tv_year_banner"
+            android:layout_height="wrap_content"
+            motion:layout_constraintStart_toEndOf="@+id/ivAvatar"
+            android:layout_width="wrap_content"
             android:visibility="invisible"
             motion:layout_constraintTop_toBottomOf="@+id/tv_name_banner"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginStart="8dp" />
 
         <Constraint
             android:id="@+id/movie_rating_banner"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintStart_toEndOf="@+id/tv_name_banner"
             android:progressTint="@color/white"
             android:background="@drawable/tv_background"
             android:visibility="invisible"
-            motion:layout_constraintTop_toBottomOf="@+id/tv_year_banner"
+            motion:layout_constraintTop_toTopOf="parent"
             />
 
         <Constraint
@@ -67,6 +67,15 @@
             android:progressTint="@color/white"
             android:background="@drawable/tv_background"
             />
+        <Constraint
+            motion:layout_constraintStart_toEndOf="@id/tv_name_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            motion:layout_constraintTop_toBottomOf="@+id/movie_rating_banner"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:id="@+id/tv_duration_movie_banner" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -86,7 +95,6 @@
             motion:layout_constraintBottom_toBottomOf="@id/ivAvatar"
             motion:layout_constraintEnd_toEndOf="@id/ivAvatar"
             motion:layout_constraintStart_toEndOf="@id/ivAvatar"
-            motion:layout_constraintTop_toBottomOf="@id/tvTitle"
             motion:layout_constraintTop_toTopOf="@id/ivAvatar"
             motion:visibilityMode="ignore" />
         <Constraint
@@ -104,14 +112,14 @@
             android:id="@+id/tv_name_banner"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="Nombre de pelicula (Año)"
             android:textColor="@color/white"
             motion:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/tv_background"
             android:visibility="visible"
-            motion:layout_constraintEnd_toEndOf="@+id/iv_banner_movie"
-            android:layout_marginEnd="8dp"/>
+            motion:layout_constraintStart_toEndOf="@+id/ivAvatar"
+            android:layout_marginStart="8dp"/>
 
         <Constraint
             android:id="@+id/tv_year_banner"
@@ -123,22 +131,22 @@
             android:visibility="visible"
             android:padding="3dp"
             motion:layout_constraintTop_toBottomOf="@+id/tv_name_banner"
-            motion:layout_constraintEnd_toEndOf="@+id/iv_banner_movie"
+            motion:layout_constraintStart_toEndOf="@id/ivAvatar"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginStart="8dp" />
 
         <Constraint
             android:id="@+id/movie_rating_banner"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintStart_toEndOf="@+id/tv_name_banner"
             android:progressTint="@color/white"
             android:background="@drawable/tv_background"
             android:visibility="visible"
-            motion:layout_constraintTop_toBottomOf="@+id/tv_year_banner"
+            motion:layout_constraintTop_toTopOf="parent"
             />
 
         <Constraint
@@ -154,6 +162,21 @@
             android:progressTint="@color/white"
             android:background="@drawable/tv_background"
             />
+
+        <Constraint
+            android:id="@+id/tv_duration_movie_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_background"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            motion:layout_constraintTop_toBottomOf="@id/tv_name_banner"
+            motion:layout_constraintStart_toEndOf="@id/tv_year_banner"
+            android:visibility="visible"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp" />
 
         <Constraint android:id="@+id/scrollView" />
     </ConstraintSet>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/riv_movie_poster"
+        android:layout_width="0dp"
+        android:layout_height="154dp"
+        app:riv_border_color="@color/primaryColor"
+        app:riv_corner_radius="8dp"
+        android:src="@mipmap/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_weight="0.3"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center"
+        android:translationZ="90dp"
+        />
+<com.animation.animpresseffect.PressEffectCardView
+    android:id="@+id/card_item_movie_container_image"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="0.8"
+    app:cardCornerRadius="20dp"
+    android:layout_marginStart="-16dp"
+    android:layout_gravity="center"
+    android:backgroundTint="@color/background_gray"
+    app:cardElevation="10dp"
+    app:button_duration="600"
+    app:button_scale="1"
+    android:elevation="10dp"
+    app:layout_constraintStart_toEndOf="@id/riv_movie_poster"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginEnd="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <HorizontalScrollView
+            android:id="@+id/hsv_tv_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_item_movie_duration_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_item_movie_name_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre de pelicula"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:singleLine="false"
+                android:maxEms="10"/>
+
+        </HorizontalScrollView>
+        <TextView
+            android:id="@+id/tv_item_movie_gender_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Generos de la pelicula"
+            android:textColor="@color/white"
+            android:singleLine="false"
+            android:maxEms="14"
+            app:layout_constraintTop_toBottomOf="@+id/hsv_tv_item_name"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/tv_item_movie_ranking_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calificacion"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_movie_duration_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"/>
+
+        <TextView
+            android:id="@+id/tv_item_movie_duration_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(Año)"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.animation.animpresseffect.PressEffectCardView>
+
+</LinearLayout>

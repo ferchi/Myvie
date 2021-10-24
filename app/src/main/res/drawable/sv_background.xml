@@ -7,11 +7,12 @@
         />
 
     <solid
-        android:color="@color/gray_transparent"/>
+        android:color="@color/background_gray"/>
 
     <stroke
-        android:width="5dp"
-        android:color="@color/primaryColor"/>
+        android:color="@color/primaryLightColor"
+        android:width="1dp"
+        />
 
     <padding
         android:bottom="3dp"

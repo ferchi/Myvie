@@ -1,9 +1,10 @@
 package com.jfsb.myvie.api
 
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
-data class MovieResponse(
+data class GetMoreInfoMovieResponse @ExperimentalTime constructor(
     @SerializedName("id") val id: Long,
     @SerializedName("title") val title: String,
     @SerializedName("overview") val overview: String,
@@ -11,5 +12,6 @@ data class MovieResponse(
     @SerializedName("backdrop_path") val backdropPath: String,
     @SerializedName("vote_average") val rating: Float,
     @SerializedName("release_date") val releaseDate: String,
-    @SerializedName("genre_ids") val genresIds: List<String>
-    )
+    @SerializedName("genres") val genresList: List<Genre>,
+    @SerializedName("runtime") val durationMovie: Long
+)

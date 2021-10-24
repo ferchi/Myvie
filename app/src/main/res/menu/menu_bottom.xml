@@ -4,14 +4,14 @@
     <item
         android:id="@+id/first_fragment"
         android:title="Home"
-        android:contentDescription="Profile"
+        android:contentDescription="Home"
         android:icon="@mipmap/house"/>
 
     <item
         android:id="@+id/second_fragment"
-        android:title="Leaderboard"
-        android:contentDescription="leaderboard"
-        android:icon="@drawable/ic_beta_24"/>
+        android:title="Search"
+        android:contentDescription="Search"
+        android:icon="@drawable/ic_search_24"/>
 
     <item
         android:id="@+id/third_fragment"

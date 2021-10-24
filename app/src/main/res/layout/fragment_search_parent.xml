@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".main.search.SearchParentFragment"
+        android:background="@color/background">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayoutTab"
+                android:layout_width="match_parent"
+                android:layout_height="34sp"
+                android:backgroundTint="@color/primaryColor"
+                >
+
+                <com.gigamole.navigationtabstrip.NavigationTabStrip
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:nts_color="@color/white"
+                    app:nts_size="16sp"
+                    app:nts_weight="3dp"
+                    app:nts_factor="2.5"
+                    app:nts_type="line"
+                    app:nts_gravity="bottom"
+                    app:nts_corners_radius="1.5dp"
+                    app:nts_animation_duration="300"
+                    app:nts_active_color="@color/white"
+                    app:nts_inactive_color="@color/background"/>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="700dp"
+                android:id="@+id/viewPager"
+                android:layout_below="@+id/appBarLayoutTab"/>
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 package com.jfsb.myvie.main.home
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,13 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.jfsb.myvie.api.MovieResponse
+import com.jfsb.myvie.api.Movie
 import com.jfsb.myvie.main.movie.MoviesAdapter
 import com.jfsb.myvie.api.MoviesRepository
 import com.jfsb.myvie.api.Utils.showMovieDetails
 import com.jfsb.myvie.databinding.FragmentHomeBinding
-import com.jfsb.myvie.main.movie.MovieInfoActivity
-import java.util.ArrayList
 
 
 class HomeFragment : Fragment() {
@@ -166,15 +163,15 @@ class HomeFragment : Fragment() {
         })
     }
 
-    private fun onPopularMoviesFetched(movies: List<MovieResponse>) {
+    private fun onPopularMoviesFetched(movies: List<Movie>) {
         popularMoviesAdapter.appendMovies(movies)
         attachPopularMoviesOnScrollListener()
     }
-    private fun onNewMoviesFetched(movies: List<MovieResponse>) {
+    private fun onNewMoviesFetched(movies: List<Movie>) {
         newMoviesAdapter.appendMovies(movies)
         attachNewMoviesOnScrollListener()
     }
-    private fun onTopMoviesFetched(movies: List<MovieResponse>) {
+    private fun onTopMoviesFetched(movies: List<Movie>) {
         topMoviesAdapter.appendMovies(movies)
         attachTopMoviesOnScrollListener()
     }

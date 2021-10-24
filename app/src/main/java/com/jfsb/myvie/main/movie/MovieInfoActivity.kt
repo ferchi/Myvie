@@ -7,12 +7,16 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.jfsb.myvie.databinding.ActivityMovieInfoBinding
 import android.graphics.text.LineBreaker
 import android.os.Build
-import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.api.*
+import com.jfsb.myvie.api.Utils.getGenre
+import java.lang.Exception
+import java.util.concurrent.TimeUnit
+import kotlin.time.Duration
+import kotlin.time.ExperimentalTime
 
 
 class MovieInfoActivity : AppCompatActivity() {
@@ -31,6 +35,7 @@ class MovieInfoActivity : AppCompatActivity() {
     private var movieId:Long = 0
 
 
+    @ExperimentalTime
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,11 +74,12 @@ class MovieInfoActivity : AppCompatActivity() {
 
         getSimilars()
 
-        binding.ivAvatar.setOnClickListener {
+        binding.ivPlayTrailer.setOnClickListener {
             getTrailers()
 
         }
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun populateDetails(extras: Bundle) {
@@ -119,6 +125,7 @@ class MovieInfoActivity : AppCompatActivity() {
 
         movieId = extras.getLong(MOVIE_ID,0)
         getCreditsMovie()
+        getDuration()
     }
 
     private fun getCreditsMovie() {
@@ -146,6 +153,14 @@ class MovieInfoActivity : AppCompatActivity() {
         )
     }
 
+    fun getDuration(){
+        MoviesRepository.getMoreInfoMovie(
+            movieId,
+            ::onMoreInfoMovieFetched,
+            ::onError
+        )
+    }
+
     private fun onGetCreditsMovieFetched(cast: List<Cast>, crew: List<Crew>) {
         crew.forEach { crewItem ->
             //Log.d("JOB", "JOB: "+crewItem.jobCrew)
@@ -159,7 +174,7 @@ class MovieInfoActivity : AppCompatActivity() {
         binding.rvActors.adapter = actorsAdapter
         attachActorsOnScrollListener()
     }
-    private fun onSimilarMoviesFetched(movies: List<MovieResponse>) {
+    private fun onSimilarMoviesFetched(movies: List<Movie>) {
 
         /*movies.forEach { movie ->
             Log.d("movie", "title: "+movie.title)
@@ -170,10 +185,13 @@ class MovieInfoActivity : AppCompatActivity() {
 
     private fun onTrailersFetched(trailers: List<Trailer>) {
 
-        trailers.forEach { trailer ->
-            DialogTrailerPlayer(trailer.linkTrailer).show(supportFragmentManager, "TRAILER")
+        //trailers.forEach { trailer ->
+            try{DialogTrailerPlayer(trailers[0].linkTrailer).show(supportFragmentManager, "TRAILER")}
+            catch (e:Exception){
+                Toast.makeText(this,"Trailer no disponible", Toast.LENGTH_SHORT).show()
+            }
             //Log.d("trailer", "https://www.youtube.com/watch?v="+trailer.linkTrailer)
-        }
+        //}
 
     }
 
@@ -216,6 +234,11 @@ class MovieInfoActivity : AppCompatActivity() {
         })
     }
 
+    private fun onMoreInfoMovieFetched(duration: Long) {
+
+        binding.tvDurationMovieBanner.text = (duration).toString() + " Minutos"
+    }
+
 
     companion object {
         const val MOVIE_BACKDROP = "extra_movie_backdrop"
@@ -228,30 +251,7 @@ class MovieInfoActivity : AppCompatActivity() {
         const val MOVIE_ID = "extra_movie_id"
     }
 
-    fun getGenre(index:String):String{
-        when(index){
-            "28"-> return "Acción"
-            "12"-> return "Aventura"
-            "16"->return "Animación"
-            "35"->return "Comedia"
-            "80"->return "Crimen"
-            "99"->return "Documental"
-            "18"->return "Drama"
-            "10751"->return "Familia"
-            "14"->return "Fantasía"
-            "36"->return "Historia"
-            "27"->return "Terror"
-            "10402"->return "Música"
-            "9648"->return "Misterio"
-            "10749"->return "Romance"
-            "878"->return "Ciencia ficción"
-            "10770"->return "Película de TV"
-            "53"->return "Suspense"
-            "10752"->return "Bélica"
-            "37"-> return "Western"
-        }
-        return "NINGUNO"
-    }
+
 
 
 }

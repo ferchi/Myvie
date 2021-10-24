@@ -13,11 +13,10 @@
         android:layout_height="150dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:src="@drawable/myvie_logo" />
+            android:layout_height="match_parent"
+            android:src="@mipmap/logo" />
     </RelativeLayout>
 
     <TextView
@@ -86,7 +85,7 @@
 
     </LinearLayout>
 
-    <Button
+    <com.animation.animpresseffect.PressEffectButton
         android:text="Sign Up"
         android:textColor="@color/white"
         android:layout_width="150dp"

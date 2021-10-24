@@ -99,5 +99,13 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["YouTubeAndroidPlayerApi.jar"])
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.3'
 
+    //Tab
+    implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:+'
+
+    //Lottie
+    implementation 'com.airbnb.android:lottie:4.2.0'
+
+    //Custom Design Carbon
+    api 'tk.zielony:carbon:0.16.0.1'
 
 }

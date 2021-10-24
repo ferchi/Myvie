@@ -46,6 +46,29 @@ interface APIService {
     fun getTrailers(
         @Path("id") movieId: Long,
         @Query("api_key") apiKey: String = "d51156038b94f2f43784a91dd97ef46d",
-        @Query("language") language: String = "es-MX"
+        @Query("language") language: String = "en-US"
     ):Call<GetTrailersResponse>
+
+    @GET ("search/movie")
+    fun searchMovie(
+        @Query("query") movieQuery: String,
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String = "d51156038b94f2f43784a91dd97ef46d",
+        @Query("language") language: String = "es-MX"
+    ): Call<GetMoviesResponse>
+
+    @GET ("movie/{id}")
+    fun getMoreInfoMovie(
+        @Path("id") movieId: Long,
+        @Query("api_key") apiKey: String = "d51156038b94f2f43784a91dd97ef46d",
+        @Query("language") language: String = "es-MX"
+    ):Call<GetMoreInfoMovieResponse>
+
+    @GET ("search/person")
+    fun searchPeople(
+        @Query("query") movieQuery: String,
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String = "d51156038b94f2f43784a91dd97ef46d",
+        @Query("language") language: String = "es-MX"
+    ):Call<GetMoreInfoMovieResponse>
 }
