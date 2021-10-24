@@ -1,6 +1,7 @@
 package com.jfsb.myvie.main.search
 
 import android.content.Context
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -8,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.R
 import com.jfsb.myvie.api.People
 import com.jfsb.myvie.databinding.ItemPeopleListTextBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+
+
+
 
 class PeopleTextListAdapter (private val peopleList: MutableList<People>,
                              private val onMovieClick: (people: People) -> Unit
@@ -59,5 +64,7 @@ class PeopleTextListAdapter (private val peopleList: MutableList<People>,
         this.peopleList.clear()
         notifyItemRangeInserted(0, 0)
     }
+
+
 
 }

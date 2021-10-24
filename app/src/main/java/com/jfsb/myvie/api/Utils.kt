@@ -2,6 +2,9 @@ package com.jfsb.myvie.api
 
 import android.content.Context
 import android.content.Intent
+import android.util.AttributeSet
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jfsb.myvie.main.movie.MovieInfoActivity
 import java.util.ArrayList
 
@@ -57,6 +60,50 @@ object Utils {
    fun showPeopleDetails(people: People, context: Context) {
    }
 
+   class GridLayoutManagerWrapper : GridLayoutManager {
+      constructor(context: Context?, spanCount:Int) : super(context, spanCount) {}
+      constructor(context: Context?, spanCount:Int, orientation: Int, reverseLayout: Boolean) : super(
+         context,
+         spanCount,
+         orientation,
+         reverseLayout
+      ) {
+      }
+
+      constructor(
+         context: Context?,
+         attrs: AttributeSet?,
+         defStyleAttr: Int,
+         defStyleRes: Int
+      ) : super(context, attrs, defStyleAttr, defStyleRes) {
+      }
+
+      override fun supportsPredictiveItemAnimations(): Boolean {
+         return false
+      }
+   }
+
+   class LinearLayoutManagerWrapper : LinearLayoutManager {
+      constructor(context: Context?) : super(context) {}
+      constructor(context: Context?, orientation: Int, reverseLayout: Boolean) : super(
+         context,
+         orientation,
+         reverseLayout
+      ) {
+      }
+
+      constructor(
+         context: Context?,
+         attrs: AttributeSet?,
+         defStyleAttr: Int,
+         defStyleRes: Int
+      ) : super(context, attrs, defStyleAttr, defStyleRes) {
+      }
+
+      override fun supportsPredictiveItemAnimations(): Boolean {
+         return false
+      }
+   }
 
 
 }

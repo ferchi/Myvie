@@ -44,7 +44,7 @@ class SearchMovieFragment : Fragment(), SearchView.OnQueryTextListener, MovieTex
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        searchLayoutMgr = LinearLayoutManager(
+        searchLayoutMgr = Utils.LinearLayoutManagerWrapper(
             requireContext(),
             LinearLayoutManager.VERTICAL,
             false

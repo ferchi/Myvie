@@ -45,7 +45,7 @@ class SearchActorFragment : Fragment(), SearchView.OnQueryTextListener, MovieTex
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        searchLayoutMgr = GridLayoutManager(requireContext(), 2)
+        searchLayoutMgr = Utils.GridLayoutManagerWrapper(requireContext(), 2)
 
 
         binding.ivSearchPeopleMode.speed = (3).toFloat()
