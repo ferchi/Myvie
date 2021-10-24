@@ -1,4 +1,4 @@
-package com.jfsb.myvie.main.movie
+package com.jfsb.myvie.main.search
 
 import com.jfsb.myvie.api.Movie
 

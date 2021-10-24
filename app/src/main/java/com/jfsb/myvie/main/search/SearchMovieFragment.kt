@@ -14,12 +14,9 @@ import com.jfsb.myvie.api.Movie
 import com.jfsb.myvie.api.MoviesRepository
 import com.jfsb.myvie.api.Utils
 import com.jfsb.myvie.databinding.FragmentSearchMovieBinding
-import com.jfsb.myvie.main.movie.MovieImageListAdapter
-import com.jfsb.myvie.main.movie.MovieTextListAdapter
-import com.jfsb.myvie.main.movie.MovieTextListListener
 
 
-class SearchMovieFragment : Fragment(), SearchView.OnQueryTextListener, MovieTextListListener{
+class SearchMovieFragment : Fragment(), SearchView.OnQueryTextListener, MovieTextListListener {
     var _binding : FragmentSearchMovieBinding? = null
     val binding get() = _binding!!
 

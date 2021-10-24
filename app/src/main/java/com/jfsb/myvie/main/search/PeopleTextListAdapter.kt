@@ -1,20 +1,12 @@
-package com.jfsb.myvie.main.movie
+package com.jfsb.myvie.main.search
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.R
-import com.jfsb.myvie.api.Cast
-import com.jfsb.myvie.api.Movie
-import com.jfsb.myvie.api.MoviesRepository
 import com.jfsb.myvie.api.People
-import com.jfsb.myvie.api.Utils.getGenre
-import com.jfsb.myvie.databinding.ItemMovieListTextBinding
 import com.jfsb.myvie.databinding.ItemPeopleListTextBinding
 
 class PeopleTextListAdapter (private val peopleList: MutableList<People>,
@@ -39,7 +31,9 @@ class PeopleTextListAdapter (private val peopleList: MutableList<People>,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val animation = AnimationUtils.loadAnimation(mContext, R.anim.slide_in_row)
+        val animation = AnimationUtils.loadAnimation(mContext, R.anim.fall_down)
+        animation.duration = 1000
+
         val people = peopleList[position]
 
 

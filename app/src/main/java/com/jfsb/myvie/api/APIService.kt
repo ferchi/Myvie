@@ -66,9 +66,9 @@ interface APIService {
 
     @GET ("search/person")
     fun searchPeople(
-        @Query("query") movieQuery: String,
+        @Query("query") peopleQuery: String,
         @Query("page") page: Int,
         @Query("api_key") apiKey: String = "d51156038b94f2f43784a91dd97ef46d",
         @Query("language") language: String = "es-MX"
-    ):Call<GetMoreInfoMovieResponse>
+    ):Call<SearchPeopleResponse>
 }

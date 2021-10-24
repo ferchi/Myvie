@@ -28,11 +28,13 @@
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/fragment_search_director.xml" value="0.1819078947368421" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/fragment_search_movie.xml" value="0.1819078947368421" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/fragment_search_parent.xml" value="0.1769736842105263" />
+        <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/fragment_search_people.xml" value="0.18782894736842104" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/item_actor.xml" value="0.22894736842105262" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/item_genre.xml" value="0.22" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/item_movie.xml" value="0.33" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/item_movie_list_image.xml" value="0.25" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/item_movie_list_text.xml" value="0.264" />
+        <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/item_people_list_image.xml" value="0.22894736842105262" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/item_people_list_text.xml" value="0.25" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/layout/layout_trailer_player.xml" value="0.22894736842105262" />
         <entry key="..\:/AndroidProject/Myvie/app/src/main/res/menu/menu_bottom.xml" value="0.18486842105263157" />

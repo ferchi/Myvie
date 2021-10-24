@@ -6,5 +6,5 @@ data class People (
     @SerializedName("id") val idPeople: Int,
     @SerializedName("name") val namePeople: String,
     @SerializedName("profile_path") val profilePath: String,
-    @SerializedName("known_for") val known: String
+    @SerializedName("known_for") val known: List<Movie>
     )

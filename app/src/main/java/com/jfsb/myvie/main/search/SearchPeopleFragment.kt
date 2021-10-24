@@ -1,60 +1,162 @@
 package com.jfsb.myvie.main.search
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.jfsb.myvie.R
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.jfsb.myvie.api.MoviesRepository
+import com.jfsb.myvie.api.People
+import com.jfsb.myvie.api.Utils
+import com.jfsb.myvie.databinding.FragmentSearchPeopleBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchActorFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class SearchActorFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class SearchActorFragment : Fragment(), SearchView.OnQueryTextListener, MovieTextListListener {
+    var _binding : FragmentSearchPeopleBinding? = null
+    val binding get() = _binding!!
+
+    private lateinit var searchLayoutMgr: LinearLayoutManager
+    private lateinit var peopleTextAdapter: PeopleTextListAdapter
+    private lateinit var peopleImageAdapter: PeopleImageListAdapter
+
+    private var searchQuery : String = "minions"
+    private var searchPeoplePage = 1
+    private var isTextMode = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_people, container, false)
+        _binding = FragmentSearchPeopleBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchActorFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchActorFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        searchLayoutMgr = GridLayoutManager(requireContext(), 2)
+
+
+        binding.ivSearchPeopleMode.speed = (3).toFloat()
+        binding.ivSearchPeopleMode.playAnimation()
+
+        binding.svPeople.setOnQueryTextListener(this)
+
+        binding.rvSearchPeople.layoutManager = searchLayoutMgr
+        peopleTextAdapter = PeopleTextListAdapter(mutableListOf()){ people -> Utils.showPeopleDetails(people, requireContext()) }
+        binding.rvSearchPeople.adapter = peopleTextAdapter
+
+        binding.ivSearchPeopleMode.setOnClickListener {
+            if(isTextMode == true){
+                binding.ivSearchPeopleMode.speed = (-3).toFloat()
+                binding.ivSearchPeopleMode.playAnimation()
+                changeListMode(false)
+                Log.d("modo", "Modo imagen" )
+            } else {
+                binding.ivSearchPeopleMode.speed = (3).toFloat()
+                binding.ivSearchPeopleMode.playAnimation()
+                changeListMode(true)
+                Log.d("modo", "Modo texto" )
+            }
+        }
+
+    }
+    private fun changeListMode(isTextMode:Boolean){
+        val query = binding.svPeople.query
+        this.isTextMode = isTextMode
+
+        if(isTextMode)
+        {
+            peopleTextAdapter = PeopleTextListAdapter(mutableListOf()){ people -> Utils.showPeopleDetails(people, requireContext()) }
+            binding.rvSearchPeople.adapter = peopleTextAdapter
+
+            if(!binding.svPeople.query.isNullOrEmpty()) {
+                searchQuery = query.toString()
+                searchPeoplePage = 1
+                peopleTextAdapter.clearPeople()
+                searchPeople(searchQuery)
+            }
+        }
+        else
+        {
+           peopleImageAdapter = PeopleImageListAdapter(mutableListOf()){people -> Utils.showPeopleDetails(people, requireContext()) }
+            binding.rvSearchPeople.adapter = peopleImageAdapter
+
+            if(!binding.svPeople.query.isNullOrEmpty()) {
+                searchQuery = query.toString()
+                searchPeoplePage = 1
+                peopleImageAdapter.clearPeople()
+                searchPeople(searchQuery)
+            }
+        }
+    }
+
+    private fun searchPeople(movieQuery:String) {
+        MoviesRepository.searchPeople(
+            searchPeoplePage,
+            movieQuery,
+            ::onSearchPeopleFetched,
+            ::onError
+        )
+    }
+
+    private fun onSearchPeopleFetched(people: List<People>) {
+        if(isTextMode) {
+            peopleTextAdapter.appendPeople(people)}
+        else{
+            peopleImageAdapter.appendPeople(people)
+        }
+        attachMoviesOnScrollListener()
+    }
+    private fun attachMoviesOnScrollListener() {
+        binding.rvSearchPeople.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val totalItemCount = searchLayoutMgr.itemCount
+                val visibleItemCount = searchLayoutMgr.childCount
+                val firstVisibleItem = searchLayoutMgr.findFirstVisibleItemPosition()
+
+                if (firstVisibleItem + visibleItemCount >= totalItemCount / 2) {
+                    binding.rvSearchPeople.removeOnScrollListener(this)
+                    searchPeoplePage++
+                    searchPeople(searchQuery)
                 }
             }
+        })
     }
+
+    private fun onError(error:String = ""){
+        Toast.makeText(requireContext(),error, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        searchQuery = query!!
+        searchPeoplePage = 1
+        if(isTextMode) {
+            peopleTextAdapter.clearPeople()}
+        else{
+            peopleImageAdapter.clearPeople()
+        }
+
+        searchPeople(searchQuery)
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return false
+    }
+    /*
+    override fun onMovieTextListChange(movies: MutableList<Movie>){
+        Toast.makeText(requireContext(),movies.toString(), Toast.LENGTH_SHORT).show()
+    }*/
 }

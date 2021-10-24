@@ -256,21 +256,21 @@ object MoviesRepository {
 
     fun searchPeople(
         page: Int = 1,
-        movieQuery: String = "",
-        onSuccess: (movies: List<Movie>) -> Unit,
+        peopleQuery: String = "",
+        onSuccess: (peopleList: List<People>) -> Unit,
         onError: (error:String) -> Unit
     ) {
-        api.searchMovie(movieQuery = movieQuery, page = page)
-            .enqueue(object : Callback<GetMoviesResponse> {
+        api.searchPeople(peopleQuery = peopleQuery, page = page)
+            .enqueue(object : Callback<SearchPeopleResponse> {
                 override fun onResponse(
-                    call: Call<GetMoviesResponse>,
-                    response: Response<GetMoviesResponse>
+                    call: Call<SearchPeopleResponse>,
+                    response: Response<SearchPeopleResponse>
                 ) {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
 
                         if (responseBody != null) {
-                            onSuccess.invoke(responseBody.movies)
+                            onSuccess.invoke(responseBody.peopleList)
                         } else {
                             onError.invoke("Null")
                         }
@@ -278,8 +278,8 @@ object MoviesRepository {
                         onError.invoke("Error")
                     }
                 }
-                override fun onFailure(call: Call<GetMoviesResponse>, t: Throwable) {
-                    onError.invoke("No Disponible")
+                override fun onFailure(call: Call<SearchPeopleResponse>, t: Throwable) {
+                    onError.invoke(t.cause.toString())
                 }
             })
     }

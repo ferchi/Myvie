@@ -54,6 +54,9 @@ object Utils {
       return "NINGUNO"
    }
 
+   fun showPeopleDetails(people: People, context: Context) {
+   }
+
 
 
 }
