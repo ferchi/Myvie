@@ -5,8 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.HttpException
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.jfsb.myvie.R
 import com.jfsb.myvie.api.Movie
@@ -45,19 +47,23 @@ class MoviesAdapter(
         private val ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar_movie_poster)
 
         fun bind(movie: Movie) {
-            Glide.with(itemView)
-                .load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
-                .transform(CenterCrop())
-                .into(poster)
 
+            if(movie.posterPath != null){
+                Glide.with(itemView)
+                    .load("https://image.tmdb.org/t/p/w342${movie.posterPath}")
+                    .transform(CenterCrop())
+                    .into(poster)}
+            else{
+                Glide.with(itemView)
+                    .load("https://firebasestorage.googleapis.com/v0/b/myvieapp.appspot.com/o/camera_0.png?alt=media&token=530d3f07-5c1f-4243-9301-169ce948f691")
+                    .fitCenter()
+                    .into(poster)
+            }
             strikedImage.setOnClickListener {
                 strikedImage.isStriked = false
             }
-
             ratingBar.rating = movie.rating/2
             itemView.setOnClickListener { onMovieClick.invoke(movie) }
-
-
         }
 
     }

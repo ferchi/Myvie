@@ -172,7 +172,7 @@ class MovieInfoActivity : AppCompatActivity() {
         actorsAdapter = ActorAdapter(mutableListOf()){ actor -> Utils.showPeopleDetails(actor.idCast.toInt(), actor.nameCast, this) }
         actorsAdapter.appendActors(cast)
         binding.rvActors.adapter = actorsAdapter
-        attachActorsOnScrollListener()
+        //attachActorsOnScrollListener()
     }
     private fun onSimilarMoviesFetched(movies: List<Movie>) {
 
@@ -199,9 +199,6 @@ class MovieInfoActivity : AppCompatActivity() {
         Toast.makeText(this,error, Toast.LENGTH_SHORT).show()
     }
 
-    private fun showActorDetails(actor: Cast) {
-
-    }
 
     private fun attachActorsOnScrollListener() {
         binding.rvActors.addOnScrollListener(object : RecyclerView.OnScrollListener() {

@@ -65,7 +65,7 @@ class PeopleMoviesDialog : DialogFragment(){
         peopleMoviesAdapter.appendMovies(castList)
         peopleMoviesAdapter.appendMovies(crewList)
         binding.rvDialogPeople.adapter = peopleMoviesAdapter
-        attachPeopleMoviesOnScrollListener()
+        //attachPeopleMoviesOnScrollListener()
     }
 
     private fun attachPeopleMoviesOnScrollListener() {
