@@ -78,4 +78,13 @@ interface APIService {
         @Query("api_key") apiKey: String = "d51156038b94f2f43784a91dd97ef46d",
         @Query("language") language: String = "es-MX"
     ):Call<GetPeopleMoviesResponse>
+
+    @GET("discover/movie")
+    fun getMovieByGenre(
+        @Query("with_genres") genreId : Long,
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String = "d51156038b94f2f43784a91dd97ef46d",
+        @Query("language") language: String = "es-MX"
+
+    ):Call<GetMoviesResponse>
 }

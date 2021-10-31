@@ -312,4 +312,33 @@ object MoviesRepository {
                 }
             })
     }
+
+    fun getMoviesByGenre(
+        genreId: Long,
+        page : Int,
+        onSuccess: (movies: List<Movie>) -> Unit,
+        onError: () -> Unit
+    ){
+        api.getMovieByGenre(genreId, page)
+            .enqueue(object : Callback<GetMoviesResponse>{
+                override fun onResponse(
+                    call: Call<GetMoviesResponse>,
+                    response: Response<GetMoviesResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+
+                        if (responseBody != null) {
+                            onSuccess.invoke(responseBody.movies)
+                        } else {
+                            onError.invoke()
+                        }
+                    } else {
+                        onError.invoke()
+                    }
+                }
+                override fun onFailure(call: Call<GetMoviesResponse>, t: Throwable) {
+                }
+            })
+    }
 }

@@ -33,6 +33,8 @@ class MovieInfoActivity : AppCompatActivity() {
     private var similarsMoviesPage = 1
 
     private var movieId:Long = 0
+    private lateinit var directorName:String
+    private  var directorId:Long = 0
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -75,7 +77,10 @@ class MovieInfoActivity : AppCompatActivity() {
 
         binding.ivPlayTrailer.setOnClickListener {
             getTrailers()
+        }
 
+        binding.tvDirector.setOnClickListener {
+            Utils.showPeopleDetails(directorId.toInt(),directorName,this)
         }
     }
 
@@ -111,12 +116,12 @@ class MovieInfoActivity : AppCompatActivity() {
 
 
         val genres = extras.getStringArrayList(MOVIE_GENRES)
-        var genresS : ArrayList<String>? = ArrayList()
+        val genresS : ArrayList<String> = ArrayList()
         genres?.forEach {
-            genresS!!.add(getGenre(it))
+            genresS.add(getGenre(it))
         }
 
-        genresAdapter = GenreAdapter(genresS)
+        genresAdapter = GenreAdapter(genresS, genres!!, this)
         binding.rvGenres.adapter = genresAdapter
 
         similarsAdapter = MoviesAdapter(mutableListOf()){ movie ->Utils.showMovieDetails(movie,this)}
@@ -153,7 +158,7 @@ class MovieInfoActivity : AppCompatActivity() {
         )
     }
 
-    fun getDuration(){
+    private fun getDuration(){
         MoviesRepository.getMoreInfoMovie(
             movieId,
             ::onMoreInfoMovieFetched,
@@ -165,7 +170,9 @@ class MovieInfoActivity : AppCompatActivity() {
         crew.forEach { crewItem ->
             //Log.d("JOB", "JOB: "+crewItem.jobCrew)
             if(crewItem.jobCrew == "Director"){
-                binding.tvDirector.text = crewItem.nameCrew
+                directorId = crewItem.idCrew
+                directorName = crewItem.nameCrew
+                binding.tvDirector.text = directorName
             }
         }
 
@@ -175,24 +182,15 @@ class MovieInfoActivity : AppCompatActivity() {
         //attachActorsOnScrollListener()
     }
     private fun onSimilarMoviesFetched(movies: List<Movie>) {
-
-        /*movies.forEach { movie ->
-            Log.d("movie", "title: "+movie.title)
-        }*/
         similarsAdapter.appendMovies(movies)
         attachSimilarsMoviesOnScrollListener()
     }
 
     private fun onTrailersFetched(trailers: List<Trailer>) {
-
-        //trailers.forEach { trailer ->
-            try{DialogTrailerPlayer(trailers[0].linkTrailer).show(supportFragmentManager, "TRAILER")}
-            catch (e:Exception){
-                Toast.makeText(this,"Trailer no disponible", Toast.LENGTH_SHORT).show()
-            }
-            //Log.d("trailer", "https://www.youtube.com/watch?v="+trailer.linkTrailer)
-        //}
-
+        try{DialogTrailerPlayer(trailers[0].linkTrailer).show(supportFragmentManager, "TRAILER")}
+        catch (e:Exception){
+            Toast.makeText(this,"Trailer no disponible", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun onError(error:String = ""){

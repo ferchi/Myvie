@@ -34,7 +34,6 @@ class PeopleMoviesDialog : DialogFragment(){
             _binding = DialogPeopleMoviesBinding.inflate(LayoutInflater.from(context))
             alertBuilder.setView(binding.root)
 
-
             peopleId = arguments?.getInt(PEOPLE_ID,0)!!
             val peopleName = arguments?.getString(PEOPLE_NAME,"")!!
 
@@ -43,7 +42,6 @@ class PeopleMoviesDialog : DialogFragment(){
 
             peopleMoviesLayoutMgr = GridLayoutManager(requireContext(),2)
             binding.rvDialogPeople.layoutManager = peopleMoviesLayoutMgr
-
 
             alertBuilder.create()
 

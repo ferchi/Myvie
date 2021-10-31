@@ -78,23 +78,6 @@ class MovieImageListAdapter (private val movies: MutableList<Movie>,
                 .into(holder.binding.rivMoviePoster)
         }
 
-
-    /*
-        holder.binding.checkItemMovieText.setOnClickListener {
-            if(movie.isSelected){
-                holder.binding.checkItemMovieText.speed = (-1).toFloat()
-                holder.binding.checkItemMovieText.playAnimation()
-                movie.isSelected = !movie.isSelected
-                moviesAux.add(movie)
-            } else {
-                holder.binding.checkItemMovieText.speed = (1).toFloat()
-                holder.binding.checkItemMovieText.playAnimation()
-                isSelected = !isSelected
-                moviesAux.remove(movie)
-            }
-            movieTextListListener.onMovieTextListChange(moviesAux)
-        }*/
-
     }
     fun appendMovies(movies: List<Movie>) {
         this.movies.addAll(movies)

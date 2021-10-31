@@ -2,6 +2,7 @@
 <com.animation.animpresseffect.PressEffectCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ly_genre_container"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:elevation="6dp"
@@ -10,7 +11,7 @@
     app:button_duration="600"
     app:button_scale="0.5"
     app:cardElevation="6dp"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="8dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
