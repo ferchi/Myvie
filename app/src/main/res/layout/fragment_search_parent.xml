@@ -21,14 +21,14 @@
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayoutTab"
                 android:layout_width="match_parent"
-                android:layout_height="34sp"
+                android:layout_height="?attr/actionBarSize"
                 android:backgroundTint="@color/primaryColor"
                 >
 
                 <com.gigamole.navigationtabstrip.NavigationTabStrip
                     android:id="@+id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
                     app:nts_color="@color/white"
                     app:nts_size="16sp"
                     app:nts_weight="3dp"
@@ -42,12 +42,11 @@
 
             </com.google.android.material.appbar.AppBarLayout>
 
-
             <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="700dp"
-                android:id="@+id/viewPager"
-                android:layout_below="@+id/appBarLayoutTab"/>
+                android:layout_below="@+id/appBarLayoutTab" />
 
         </RelativeLayout>
 

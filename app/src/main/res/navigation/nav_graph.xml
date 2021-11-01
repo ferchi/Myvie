@@ -17,26 +17,18 @@
 
         <fragment
             android:id="@+id/second_fragment"
-            android:name="com.jfsb.myvie.main.movie.MovieInfoActivity"
-            android:label="Leaderboard"
-            tools:layout="@layout/activity_movie_info" >
+            android:name="com.jfsb.myvie.main.search.SearchParentFragment"
+            android:label="Search"
+            tools:layout="@layout/fragment_search_parent" >
             <action
                 android:id="@+id/action_secondFragment_to_thirdFragment"
                 app:destination="@id/third_fragment" />
         </fragment>
         <fragment
             android:id="@+id/third_fragment"
-            android:name="com.jfsb.myvie.main.search.SearchParentFragment"
-            android:label="Search"
-            tools:layout="@layout/fragment_search_parent" >
-            <action
-                android:id="@+id/action_thirdFragment_to_fourthFragment"
-                app:destination="@id/fourth_fragment" />
-
-        </fragment>
-        <fragment
-            android:id="@+id/fourth_fragment"
-            android:name="me.ibrahimsn.smoothbottombar.FourthFragment"
+            android:name="com.jfsb.myvie.main.profile.ProfileFragment"
             android:label="Profile"
-            tools:layout="@layout/fragment_fourth" />
+            tools:layout="@layout/fragment_profile" >
+        </fragment>
+
     </navigation>

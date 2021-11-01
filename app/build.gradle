@@ -106,7 +106,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:4.2.0'
 
     //Custom Design Carbon
-    api 'tk.zielony:carbon:0.16.0.1'
+    api 'tk.zielony:carbon:0.17.0'
 
     /* ------  Librerias para implementar las herramientas de Firebase   -------*/
     implementation platform('com.google.firebase:firebase-bom:28.2.1')
@@ -116,7 +116,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'com.google.firebase:firebase-messaging-ktx'
+
+    //Librerias para el collapsing toolbar
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
 }
 
     // Añadir para evitar errores con firebase
     apply plugin: 'com.google.gms.google-services'
+

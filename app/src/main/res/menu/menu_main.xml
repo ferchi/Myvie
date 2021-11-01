@@ -5,20 +5,14 @@
         android:id="@+id/item0"
         android:title="Home"
         android:icon="@mipmap/house"/>
-
     <item
         android:id="@+id/item1"
-        android:title="Secundario"
-        android:icon="@drawable/ic_beta_24"/>
-
-    <item
-        android:id="@+id/item2"
         android:title="Buscar"
         android:icon="@drawable/ic_search_24"/>
 
     <item
-        android:id="@+id/item3"
-        android:title="Cuarto"
-        android:icon="@drawable/ic_lambda_24"/>
+        android:id="@+id/item2"
+        android:title="Perfil"
+        android:icon="@drawable/ic_person_24"/>
 
 </menu>
