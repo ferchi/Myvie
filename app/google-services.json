@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "987739535057",
+    "project_id": "myvieapp",
+    "storage_bucket": "myvieapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987739535057:android:910f6fde7a220fa25677f0",
+        "android_client_info": {
+          "package_name": "com.jfsb.myvie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987739535057-cg1vpap0agfe62r12lnc5mf0tm9eqcpd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jfsb.myvie",
+            "certificate_hash": "e07b60bca9d60c5f54069db0e72a6de65af3e7ec"
+          }
+        },
+        {
+          "client_id": "987739535057-a1kvnvhk5clpph9vghphnpchmv35fhvg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuHXLmvUDzvlH6dilcW5GTk0bCy21OQAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987739535057-a1kvnvhk5clpph9vghphnpchmv35fhvg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
