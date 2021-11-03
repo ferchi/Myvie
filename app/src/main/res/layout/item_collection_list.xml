@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.animation.animpresseffect.PressEffectCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_item_collection_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/background_gray"
+    android:padding="8dp"
+    android:layout_margin="8dp">
+
+    <TextView
+        android:id="@+id/tv_item_collection_list_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Collection Name"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textAlignment="center"/>
+
+</com.animation.animpresseffect.PressEffectCardView>

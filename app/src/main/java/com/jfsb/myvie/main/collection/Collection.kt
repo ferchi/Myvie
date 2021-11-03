@@ -2,13 +2,14 @@ package com.jfsb.myvie.main.collection
 
 import com.jfsb.myvie.api.Movie
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 
 data class Collection (
-    @SerializedName("id") val collectionId:String = "",
-    @SerializedName("author") val authorId:String = "",
-    @SerializedName("name") val collectionName:String = "",
-    @SerializedName("movies") val collectionMovies:List<Long>? = null,
-    @SerializedName("image") val collectionImage:String? = "",
-    @SerializedName("date") val collectionDate:String = ""
+   val id:String? = null,
+   val author:String? = null,
+   val name:String? = null,
+   val movies:List<String>? = arrayListOf(),
+   val image:String? = null,
+   val date: String? = null
     )

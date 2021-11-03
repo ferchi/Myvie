@@ -66,23 +66,27 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:background="@drawable/tv_background_red"
-                android:padding="14dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="280dp"
                 >
-                <TextView
+                <com.animation.animpresseffect.PressEffectButton
                     android:id="@+id/tv_profile_followers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="# Seguidores"
                     android:textColor="@color/white"
+                    android:background="@drawable/tv_background_red"
                     android:layout_marginEnd="8dp"/>
-                <TextView
+                <com.animation.animpresseffect.PressEffectButton
                     android:id="@+id/tv_profile_collections"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="# Colecciones"
                     android:textColor="@color/white"
+                    android:background="@drawable/tv_background_red"
+
                     android:layout_marginStart="8dp"/>
             </LinearLayout>
             <androidx.appcompat.widget.Toolbar
@@ -113,8 +117,9 @@
                 android:text="Colecciones"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginStart="8dp"/>
+                android:textSize="24sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_profile_collections"
@@ -125,8 +130,5 @@
                 android:layout_marginEnd="8dp"/>
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -13,4 +13,6 @@
     <color name="background_gray">#161F23</color>
     <color name="gray">#B3A9A9</color>
     <color name="gray_transparent">#61323030</color>
+    <color name="dark_semitransparent">#C6000000</color>
+
 </resources>

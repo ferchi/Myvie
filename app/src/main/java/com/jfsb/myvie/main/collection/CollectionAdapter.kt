@@ -1,5 +1,6 @@
 package com.jfsb.myvie.main.collection
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
@@ -24,11 +25,15 @@ class CollectionAdapter(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val collection = dataSet[position]
 
-        viewHolder.binding.tvItemCollectionName.text = collection.collectionName
+        viewHolder.binding.tvItemCollectionName.text = collection.name
+
+        Log.d("collection", "name: " + collection.name)
+        Log.d("collection", "date: " + collection.date)
+        Log.d("collection", "id: " + collection.id)
 
         try {
             Glide.with(context)
-                .load(collection.collectionImage)
+                .load(collection.image)
                 .transform(CenterCrop())
                 .into(viewHolder.binding.rivItemCollectionPoster)
         } catch (e:Exception){

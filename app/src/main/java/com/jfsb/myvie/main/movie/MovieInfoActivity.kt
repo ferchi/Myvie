@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.R
 import com.jfsb.myvie.api.*
+import com.jfsb.myvie.main.collection.DialogCollection
+import com.jfsb.myvie.main.collection.DialogCollectionList
 import com.jfsb.myvie.objects.Utils
 import com.jfsb.myvie.objects.Utils.getGenre
 import com.leinardi.android.speeddial.SpeedDialActionItem
@@ -255,12 +257,12 @@ class MovieInfoActivity : AppCompatActivity() {
         binding.fabMovieInfo.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { item ->
             when (item.id) {
                 R.id.addCollection -> {
-                    Toast.makeText(this,"AÑADIR",Toast.LENGTH_SHORT).show()
+                    DialogCollectionList(movieId.toString()).show(supportFragmentManager,"Agregar")
                     binding.fabMovieInfo.close() // To close the Speed Dial with animation
                     return@OnActionSelectedListener true // false will close it without animation
                 }
                 R.id.createCollection -> {
-                    Toast.makeText(this,"CREAR",Toast.LENGTH_SHORT).show()
+                    DialogCollection(movieId.toString()).show(supportFragmentManager, "Coleccion")
                     binding.fabMovieInfo.close() // To close the Speed Dial with animation
                     return@OnActionSelectedListener true // false will close it without animation
                 }
@@ -280,8 +282,5 @@ class MovieInfoActivity : AppCompatActivity() {
         const val MOVIE_GENRES = "extra_movie_genres"
         const val MOVIE_ID = "extra_movie_id"
     }
-
-
-
 
 }
