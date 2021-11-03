@@ -37,7 +37,10 @@ class RegisterActivity : AppCompatActivity() {
                                         hashMapOf (
                                             "email" to binding.etRegisterEmail.text.toString(),
                                             "name" to binding.etRegisterUsername.text.toString(),
-                                            "imgProfile" to ""
+                                            "imgProfile" to "",
+                                            "collections" to 0,
+                                            "followers" to 0,
+                                            "description" to ""
                                         )
                                     )
                                     login(it.result?.user?.email ?:"", binding.etRegisterPassword.text.toString())

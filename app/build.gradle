@@ -73,6 +73,8 @@ dependencies {
     //Retrofit 2 para consumir API
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation 'com.google.code.gson:gson:2.8.8'
+
 
     //Corutinas
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2-native-mt'
@@ -120,6 +122,10 @@ dependencies {
     //Librerias para el collapsing toolbar
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    //FAB
+    implementation "com.leinardi.android:speed-dial:3.2.0"
+
 }
 
     // Añadir para evitar errores con firebase

@@ -8,12 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.api.MoviesRepository
 import com.jfsb.myvie.api.People
-import com.jfsb.myvie.api.Utils
+import com.jfsb.myvie.objects.Utils
 import com.jfsb.myvie.databinding.FragmentSearchPeopleBinding
 
 

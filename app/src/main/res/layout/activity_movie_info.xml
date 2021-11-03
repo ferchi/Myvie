@@ -186,38 +186,54 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:orientation="vertical">
 
-                        <com.animation.animpresseffect.PressEffectCardView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:elevation="6dp"
-                            app:cardUseCompatPadding="true"
-                            android:backgroundTint="@android:color/transparent"
-                            app:button_duration="600"
-                            app:button_scale="0.5"
-                            >
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:padding="4dp"
+                            android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <com.animation.animpresseffect.PressEffectCardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:elevation="6dp"
+                                app:cardUseCompatPadding="true"
+                                android:backgroundTint="@android:color/transparent"
+                                app:button_duration="600"
+                                app:button_scale="0.5"
+                                android:layout_gravity="start"
                                 >
-                                <TextView
-                                    android:id="@+id/tv_director"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/tv_background"
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
                                     android:padding="4dp"
-                                    android:text="Director"
-                                    android:textColor="@color/white"
-                                    android:textSize="16dp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-                            </androidx.constraintlayout.widget.ConstraintLayout>
+                                    >
+                                    <TextView
+                                        android:id="@+id/tv_director"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/tv_background"
+                                        android:padding="4dp"
+                                        android:text="Director"
+                                        android:textColor="@color/white"
+                                        android:textSize="16dp"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+                                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        </com.animation.animpresseffect.PressEffectCardView>
+                            </com.animation.animpresseffect.PressEffectCardView>
 
-
+                            <com.leinardi.android.speeddial.SpeedDialView
+                                android:id="@+id/fab_movie_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top|end"
+                                app:sdMainFabClosedSrc="@drawable/myvie_logo"
+                                app:sdMainFabClosedBackgroundColor="@color/primaryColor"
+                                app:sdMainFabOpenedBackgroundColor="@color/primaryDarkColor"
+                                app:sdExpansionMode="right"/>
+                        </LinearLayout>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_genres"

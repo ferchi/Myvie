@@ -1,0 +1,44 @@
+<com.animation.animpresseffect.PressEffectCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="120dp"
+    android:layout_height="120dp"
+    android:layout_marginEnd="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="4dp"
+    android:backgroundTint="@color/background_gray"
+    app:cardElevation="10dp"
+    app:button_duration="600"
+    app:button_scale="1"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_item_collection_poster"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            app:riv_border_color="@color/primaryColor"
+            app:riv_corner_radius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/myvie_logo"
+            />
+        <TextView
+            android:id="@+id/tv_item_collection_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Colección 1"
+            android:textColor="@color/white"
+            android:background="@drawable/tv_background"
+            app:layout_constraintBottom_toBottomOf="@+id/riv_item_collection_poster"
+            app:layout_constraintEnd_toEndOf="@+id/riv_item_collection_poster"
+            app:layout_constraintStart_toStartOf="@+id/riv_item_collection_poster"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.animation.animpresseffect.PressEffectCardView>

@@ -12,9 +12,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.api.*
 import com.jfsb.myvie.databinding.DialogPeopleMoviesBinding
-import com.jfsb.myvie.main.movie.ActorAdapter
 import com.jfsb.myvie.main.movie.MoviesAdapter
-import java.util.*
+import com.jfsb.myvie.objects.Utils
 
 
 class PeopleMoviesDialog : DialogFragment(){

@@ -11,7 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.jfsb.myvie.R
 import com.jfsb.myvie.api.Movie
 import com.jfsb.myvie.api.MoviesRepository
-import com.jfsb.myvie.api.Utils.getGenre
+import com.jfsb.myvie.objects.Utils.getGenre
 import com.jfsb.myvie.databinding.ItemMovieListImageBinding
 
 class MovieImageListAdapter (private val movies: MutableList<Movie>,

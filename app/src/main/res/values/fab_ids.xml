@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="addCollection" type="id" />
+    <item name="createCollection" type="id" />
+    <item name="seen" type="id" />
+</resources>

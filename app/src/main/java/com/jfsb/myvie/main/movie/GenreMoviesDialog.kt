@@ -3,18 +3,15 @@ package com.jfsb.myvie.main.movie
 import android.app.Dialog
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.api.*
 import com.jfsb.myvie.databinding.DialogGenreMoviesBinding
-import java.util.*
+import com.jfsb.myvie.objects.Utils
 
 
 class GenreMoviesDialog : DialogFragment(){

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.api.Movie
 import com.jfsb.myvie.main.movie.MoviesAdapter
 import com.jfsb.myvie.api.MoviesRepository
-import com.jfsb.myvie.api.Utils.showMovieDetails
+import com.jfsb.myvie.objects.Utils.showMovieDetails
 import com.jfsb.myvie.databinding.FragmentHomeBinding
 
 

@@ -11,12 +11,13 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jfsb.myvie.R
 import com.jfsb.myvie.api.*
-import com.jfsb.myvie.api.Utils.getGenre
+import com.jfsb.myvie.objects.Utils
+import com.jfsb.myvie.objects.Utils.getGenre
+import com.leinardi.android.speeddial.SpeedDialActionItem
+import com.leinardi.android.speeddial.SpeedDialView
 import java.lang.Exception
-import java.util.concurrent.TimeUnit
-import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
 
 
 class MovieInfoActivity : AppCompatActivity() {
@@ -80,8 +81,10 @@ class MovieInfoActivity : AppCompatActivity() {
         }
 
         binding.tvDirector.setOnClickListener {
-            Utils.showPeopleDetails(directorId.toInt(),directorName,this)
+            Utils.showPeopleDetails(directorId.toInt(), directorName, this)
         }
+
+        createFab()
     }
 
 
@@ -124,7 +127,7 @@ class MovieInfoActivity : AppCompatActivity() {
         genresAdapter = GenreAdapter(genresS, genres!!, this)
         binding.rvGenres.adapter = genresAdapter
 
-        similarsAdapter = MoviesAdapter(mutableListOf()){ movie ->Utils.showMovieDetails(movie,this)}
+        similarsAdapter = MoviesAdapter(mutableListOf()){ movie -> Utils.showMovieDetails(movie,this)}
         binding.rvSimilares.adapter = similarsAdapter
 
 
@@ -232,6 +235,38 @@ class MovieInfoActivity : AppCompatActivity() {
     private fun onMoreInfoMovieFetched(duration: Long) {
 
         binding.tvDurationMovieBanner.text = (duration).toString() + " Minutos"
+    }
+
+    private fun createFab(){
+        val primaryColor = resources.getColor(R.color.primaryColor,theme)
+        val white = resources.getColor(R.color.white,theme)
+
+        val add = SpeedDialActionItem.Builder(R.id.addCollection,R.drawable.ic_add_24)
+            .setFabBackgroundColor(primaryColor)
+            .setFabImageTintColor(white)
+
+        val create = SpeedDialActionItem.Builder(R.id.createCollection,R.drawable.ic_create_24)
+            .setFabBackgroundColor(primaryColor)
+            .setFabImageTintColor(white)
+
+        binding.fabMovieInfo.addActionItem(add.create())
+        binding.fabMovieInfo.addActionItem(create.create())
+
+        binding.fabMovieInfo.setOnActionSelectedListener(SpeedDialView.OnActionSelectedListener { item ->
+            when (item.id) {
+                R.id.addCollection -> {
+                    Toast.makeText(this,"AÑADIR",Toast.LENGTH_SHORT).show()
+                    binding.fabMovieInfo.close() // To close the Speed Dial with animation
+                    return@OnActionSelectedListener true // false will close it without animation
+                }
+                R.id.createCollection -> {
+                    Toast.makeText(this,"CREAR",Toast.LENGTH_SHORT).show()
+                    binding.fabMovieInfo.close() // To close the Speed Dial with animation
+                    return@OnActionSelectedListener true // false will close it without animation
+                }
+            }
+            false
+        })
     }
 
 

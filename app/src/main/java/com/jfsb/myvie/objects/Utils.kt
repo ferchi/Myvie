@@ -1,4 +1,4 @@
-package com.jfsb.myvie.api
+package com.jfsb.myvie.objects
 
 import android.content.Context
 import android.content.Intent
@@ -18,10 +18,10 @@ import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_RATING
 import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_RELEASE_DATE
 import com.jfsb.myvie.main.movie.MovieInfoActivity.Companion.MOVIE_TITLE
 import com.jfsb.myvie.main.people.PeopleMoviesDialog
-import com.google.android.youtube.player.internal.f
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import com.jfsb.myvie.api.Movie
 import com.jfsb.myvie.main.people.PeopleMoviesDialog.Companion.PEOPLE_ID
 import com.jfsb.myvie.main.people.PeopleMoviesDialog.Companion.PEOPLE_NAME
 

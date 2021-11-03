@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.R
 import com.jfsb.myvie.api.Movie
 import com.jfsb.myvie.api.MoviesRepository
-import com.jfsb.myvie.api.Utils.getGenre
+import com.jfsb.myvie.objects.Utils.getGenre
 import com.jfsb.myvie.databinding.ItemMovieListTextBinding
 
 class MovieTextListAdapter (private val movies: MutableList<Movie>,

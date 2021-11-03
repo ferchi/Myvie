@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.api.Movie
 import com.jfsb.myvie.api.MoviesRepository
-import com.jfsb.myvie.api.Utils
+import com.jfsb.myvie.objects.Utils
 import com.jfsb.myvie.databinding.FragmentSearchMovieBinding
 
 
