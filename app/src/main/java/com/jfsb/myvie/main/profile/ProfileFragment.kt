@@ -88,6 +88,11 @@ class ProfileFragment : Fragment() {
         binding.rivImageProfile.setOnLongClickListener {
             changeImg()
         }
+
+        binding.tvProfileDescription.setOnLongClickListener {
+            DialogDescription().show(parentFragmentManager,"Descripcion")
+            false
+        }
     }
 
     private fun loadData(){

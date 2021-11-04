@@ -35,9 +35,10 @@ class DialogCollection(val movieId:String) : DialogFragment(){
             alertBuilder.setPositiveButton("Crear") { _, _ ->
                 val collectionName = binding.etCreateCollectionName.text.toString()
                 val id: String = db.collection("Collections").document().id
-                val sdf = SimpleDateFormat("dd/M/yyyy hh:mm")
+                val sdf = SimpleDateFormat("dd/M/yyyy")
                 val currentDate = sdf.format(Date())
                 val movies = listOf(movieId)
+                val imgPath = "https://firebasestorage.googleapis.com/v0/b/myvieapp.appspot.com/o/camera_0.png?alt=media&token=530d3f07-5c1f-4243-9301-169ce948f691"
 
                 if(collectionName.isNotBlank()){
                 db.collection("Collections").document(id).set(
@@ -46,7 +47,7 @@ class DialogCollection(val movieId:String) : DialogFragment(){
                         "author" to current,
                         "name" to collectionName,
                         "movies" to movies,
-                        "image" to null,
+                        "image" to imgPath,
                         "date" to currentDate.toString()
                     )
                 )

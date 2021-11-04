@@ -1,5 +1,6 @@
 package com.jfsb.myvie.main.movie
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,6 +34,7 @@ class MoviesAdapter(
     }
 
     fun appendMovies(movies: List<Movie>) {
+        Log.d("movies", itemCount.toString())
         this.movies.addAll(movies)
         notifyItemRangeInserted(
             this.movies.size,

@@ -7,6 +7,7 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.jfsb.myvie.R
+import com.jfsb.myvie.api.MovieInfoResponse
 import com.jfsb.myvie.api.Movie
 import com.jfsb.myvie.api.MoviesRepository
 import com.jfsb.myvie.objects.Utils.getGenre
@@ -103,9 +104,10 @@ class MovieTextListAdapter (private val movies: MutableList<Movie>,
         )
     }
 
-    private fun onMoreInfoMovieFetched(duration: Long) {
 
-        durationS = (duration).toString() + " Minutos"
+    private fun onMoreInfoMovieFetched(movieInfo: MovieInfoResponse) {
+
+        durationS = (movieInfo.durationMovie).toString() + " Minutos"
     }
 
     private fun onError(error:String){

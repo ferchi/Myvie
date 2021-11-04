@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.jfsb.myvie.R
+import com.jfsb.myvie.api.MovieInfoResponse
 import com.jfsb.myvie.api.Movie
 import com.jfsb.myvie.api.MoviesRepository
 import com.jfsb.myvie.objects.Utils.getGenre
@@ -87,6 +88,16 @@ class MovieImageListAdapter (private val movies: MutableList<Movie>,
         )
     }
 
+    fun appendMovie(movie: Movie) {
+        if(movie !in movies) {
+            this.movies.add(movie)
+            notifyItemRangeInserted(
+                this.movies.size,
+                movies.size - 1
+            )
+        }
+    }
+
     fun clearMovies() {
         this.movies.clear()
         notifyItemRangeInserted(0, 0)
@@ -100,11 +111,10 @@ class MovieImageListAdapter (private val movies: MutableList<Movie>,
         )
     }
 
-    private fun onMoreInfoMovieFetched(duration: Long) {
+    private fun onMoreInfoMovieFetched(movieInfo: MovieInfoResponse) {
 
-        durationS = (duration).toString() + " Minutos"
+        durationS = (movieInfo.durationMovie).toString() + " Minutos"
     }
-
     private fun onError(error:String){
         Toast.makeText(mContext,"No se obtuvo duración : $error", Toast.LENGTH_SHORT).show()
     }

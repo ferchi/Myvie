@@ -5,8 +5,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.time.Duration
-import kotlin.time.ExperimentalTime
 
 object MoviesRepository {
 
@@ -227,20 +225,21 @@ object MoviesRepository {
 
     fun getMoreInfoMovie(
         movieId: Long = 0,
-        onSuccess: (duration:Long) -> Unit,
+        onSuccess: (movieInfo:MovieInfoResponse) -> Unit,
         onError: (error:String) -> Unit
     ) {
         api.getMoreInfoMovie(movieId = movieId)
-            .enqueue(object : Callback<GetMoreInfoMovieResponse> {
+            .enqueue(object : Callback<MovieInfoResponse> {
                 override fun onResponse(
-                    call: Call<GetMoreInfoMovieResponse>,
-                    response: Response<GetMoreInfoMovieResponse>
+                    call: Call<MovieInfoResponse>,
+                    infoResponse: Response<MovieInfoResponse>
                 ) {
-                    if (response.isSuccessful) {
-                        val responseBody = response.body()
+                    if (infoResponse.isSuccessful) {
+                        val responseBody = infoResponse.body()
 
                         if (responseBody != null) {
-                            onSuccess.invoke(responseBody.durationMovie)
+                            val movieInfoResult : MovieInfoResponse = responseBody
+                            onSuccess.invoke(responseBody)
                         } else {
                             onError.invoke("Null")
                         }
@@ -248,7 +247,7 @@ object MoviesRepository {
                         onError.invoke("Error")
                     }
                 }
-                override fun onFailure(call: Call<GetMoreInfoMovieResponse>, t: Throwable) {
+                override fun onFailure(call: Call<MovieInfoResponse>, t: Throwable) {
                     onError.invoke("No Disponible")
                 }
             })

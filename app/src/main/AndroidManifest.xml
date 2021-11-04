@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Myvie">
         <activity
             android:name=".main.collection.CollectionActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".main.MainActivity"
             android:exported="true"
@@ -22,7 +23,7 @@
         <activity
             android:name=".first.RegisterActivity"
             android:exported="true"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".first.LoginActivity"
             android:exported="true"

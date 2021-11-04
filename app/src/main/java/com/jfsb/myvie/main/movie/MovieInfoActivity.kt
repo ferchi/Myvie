@@ -234,9 +234,9 @@ class MovieInfoActivity : AppCompatActivity() {
         })
     }
 
-    private fun onMoreInfoMovieFetched(duration: Long) {
+    private fun onMoreInfoMovieFetched(movieInfo: MovieInfoResponse) {
 
-        binding.tvDurationMovieBanner.text = (duration).toString() + " Minutos"
+        binding.tvDurationMovieBanner.text = (movieInfo.durationMovie).toString() + " Minutos"
     }
 
     private fun createFab(){

@@ -11,7 +11,6 @@
         android:id="@+id/appBar_collection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark">
 
 <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -19,14 +18,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
-    app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+    app:layout_scrollFlags="scroll|exitUntilCollapsed"
     app:titleTextColor="@color/white">
 
     <ImageView
+        android:id="@+id/iv_collection_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:fitsSystemWindows="true"
         android:scaleType="centerCrop"
+        android:layout_marginTop="?attr/actionBarSize"
         android:src="@drawable/myvie_logo"/>
 
     <View
@@ -39,12 +40,10 @@
         android:id="@+id/toolbar_collection"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:contentInsetStart="0dp"
-        app:contentInsetStartWithNavigation="0dp"
         app:layout_collapseMode="pin"
-        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
         android:background="@color/primaryColor"
-        app:titleTextColor="@color/white"/>
+        app:titleTextColor="@color/white">
+    </androidx.appcompat.widget.Toolbar>
 
 </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -61,11 +60,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Contenido"
-            android:textColor="@color/white"/>
+            <carbon.widget.RecyclerView
+                android:id="@+id/rv_collection"
+                android:layout_margin="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
 
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>

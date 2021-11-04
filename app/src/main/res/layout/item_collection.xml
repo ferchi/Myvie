@@ -1,5 +1,6 @@
 <com.animation.animpresseffect.PressEffectCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_item_collection_container"
     android:layout_width="120dp"
     android:layout_height="120dp"
     android:layout_marginEnd="8dp"

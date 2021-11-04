@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import kotlin.time.Duration
 import kotlin.time.ExperimentalTime
 
-data class GetMoreInfoMovieResponse @ExperimentalTime constructor(
+data class MovieInfoResponse @ExperimentalTime constructor(
     @SerializedName("id") val id: Long,
     @SerializedName("title") val title: String,
     @SerializedName("overview") val overview: String,

@@ -1,5 +1,6 @@
 package com.jfsb.myvie.main.collection
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,8 +8,11 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.jfsb.myvie.R
 import com.jfsb.myvie.databinding.ItemCollectionBinding
+import com.squareup.picasso.Picasso
 import java.lang.Exception
+import java.util.ArrayList
 
 class CollectionAdapter(
     private val dataSet: List<Collection>,
@@ -27,17 +31,21 @@ class CollectionAdapter(
 
         viewHolder.binding.tvItemCollectionName.text = collection.name
 
-        Log.d("collection", "name: " + collection.name)
-        Log.d("collection", "date: " + collection.date)
-        Log.d("collection", "id: " + collection.id)
-
         try {
-            Glide.with(context)
+            Picasso.get()
                 .load(collection.image)
-                .transform(CenterCrop())
                 .into(viewHolder.binding.rivItemCollectionPoster)
-        } catch (e:Exception){
 
+        } catch (e: Exception) {
+            Picasso.get()
+                .load(R.drawable.myvie_logo)
+                .into(viewHolder.binding.rivItemCollectionPoster)
+        }
+
+        viewHolder.binding.cardItemCollectionContainer.setOnClickListener {
+            val intent = Intent(context, CollectionActivity::class.java)
+            intent.putExtra("id", collection.id)
+            context.startActivity(intent)
         }
     }
 
