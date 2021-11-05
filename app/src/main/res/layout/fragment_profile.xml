@@ -60,6 +60,22 @@
                     android:maxLength="140"
                     android:layout_marginTop="8dp"/>
 
+                <com.animation.animpresseffect.PressEffectCardView
+                    android:id="@+id/card_profile_logout"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/gray_transparent"
+                    app:cardCornerRadius="8dp"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    >
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:src="@drawable/ic_baseline_exit_to_app_24"/>
+                </com.animation.animpresseffect.PressEffectCardView>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"

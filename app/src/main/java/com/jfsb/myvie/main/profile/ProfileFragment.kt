@@ -29,6 +29,7 @@ import com.google.firebase.storage.StorageReference
 import com.jfsb.myvie.R
 import com.jfsb.myvie.databinding.FragmentHomeBinding
 import com.jfsb.myvie.databinding.FragmentProfileBinding
+import com.jfsb.myvie.first.LoginActivity
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.flow.combine
 import java.io.ByteArrayOutputStream
@@ -92,6 +93,13 @@ class ProfileFragment : Fragment() {
         binding.tvProfileDescription.setOnLongClickListener {
             DialogDescription().show(parentFragmentManager,"Descripcion")
             false
+        }
+
+        binding.cardProfileLogout.setOnClickListener {
+            Firebase.auth.signOut()
+            val intent = Intent(requireContext(),LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
     }
 

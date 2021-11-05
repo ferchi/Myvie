@@ -221,6 +221,7 @@ class CollectionActivity : AppCompatActivity(), MovieTextListListener {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
             adapter = moviesAdapter
+
         }
     }
 

@@ -39,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener{
-            txtEmail = binding.etLoginEmail.toString()
+            txtEmail = binding.etLoginEmail.text.toString()
             txtPassword = binding.etLoginPassword.text.toString()
 
             if (txtEmail.isNotEmpty() && txtPassword.isNotEmpty()){
@@ -49,22 +49,27 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this,"Favor de ingresar todos los datos", Toast.LENGTH_SHORT).show()
             }
         }
-    }
 
-    private fun logUser(){
-        mAuth.signInWithEmailAndPassword(txtEmail,txtPassword).addOnCompleteListener(){ task ->
-            if(task.isSuccessful){
-                startApp()
-                this.finish()
-            } else{
-                Toast.makeText(this,"Verificar los datos", Toast.LENGTH_SHORT).show()
-            }
+        binding.tvLoginNewPassword.setOnClickListener {
+            DialogResetPassword().show(supportFragmentManager,"Restablecer")
         }
     }
 
+    private fun logUser(){
+        mAuth.signInWithEmailAndPassword(txtEmail, txtPassword)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    startApp()
+                    this.finish()
+                } else {
+                    Toast.makeText(this,"Verifica los datos", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
     private fun startApp(){
-        val intentProfile = Intent(this, MainActivity::class.java).apply {}
+        val intentProfile = Intent(this, MainActivity::class.java)
         startActivity(intentProfile)
-        // Utils.openProfile(FirebaseDatabase.getInstance().reference, "Users", mAuth.currentUser!!.uid, requireActivity(), MainActivity(), true)
+        this.finish()
     }
 }

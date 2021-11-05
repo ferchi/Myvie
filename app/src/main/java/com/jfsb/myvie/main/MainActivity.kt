@@ -31,4 +31,8 @@ class MainActivity : AppCompatActivity() {
         val menu = popupMenu.menu
         binding.bottomBar.setupWithNavController(menu, navController)
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+    }
 }

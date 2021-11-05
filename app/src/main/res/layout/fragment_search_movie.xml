@@ -41,7 +41,8 @@
         android:src="@drawable/ic_filter_list_24"
         android:background="@drawable/iv_background"
         app:layout_constraintEnd_toStartOf="@+id/iv_search_movie_mode"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_search_movies"
