@@ -36,6 +36,23 @@
     android:layout_gravity="bottom"
     android:background="@drawable/title_background" />
 
+    <com.animation.animpresseffect.PressEffectCardView
+        android:id="@+id/card_collection_menu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|end"
+        android:backgroundTint="@android:color/transparent"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="8dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_menu_24"/>
+
+    </com.animation.animpresseffect.PressEffectCardView>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_collection"
         android:layout_width="match_parent"

@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.google.android.material.appbar.AppBarLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -223,10 +225,14 @@ class ProfileFragment : Fragment() {
             val urlImg = result!!.get("imgProfile").toString()
 
             try {
-                Picasso.get().load(urlImg).into(binding.rivImageProfile)
+                Glide.with(requireActivity())
+                    .load(urlImg)
+                    .transform(CenterCrop())
+                    .into(binding.rivImageProfile)
+                //Picasso.get().load(urlImg).into(binding.rivImageProfile)
 
             } catch (e: Exception) {
-                Picasso.get().load(R.drawable.myvie_logo).into(binding.rivImageProfile)
+
             }
         }
     }

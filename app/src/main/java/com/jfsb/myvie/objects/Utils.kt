@@ -22,6 +22,7 @@ import com.jfsb.myvie.main.people.PeopleMoviesDialog
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import com.jfsb.myvie.api.Movie
+import com.jfsb.myvie.api.MovieInfoResponse
 import com.jfsb.myvie.main.people.PeopleMoviesDialog.Companion.PEOPLE_ID
 import com.jfsb.myvie.main.people.PeopleMoviesDialog.Companion.PEOPLE_NAME
 
@@ -135,5 +136,21 @@ object Utils {
       }
    }
 
+   fun convertMovie(movieInfo: MovieInfoResponse): Movie {
+      val id = movieInfo.id
+      val title = movieInfo.title
+      val overview = movieInfo.overview
+      val posterPath = movieInfo.posterPath
+      val backdropPath = movieInfo.backdropPath
+      val rating = movieInfo.rating
+      val releaseDate = movieInfo.releaseDate
+      val genreList = movieInfo.genresList
+      val genreIds: MutableList<String> = mutableListOf()
+
+      genreList.forEach { genre ->
+         genreIds.add(genre.id.toString())
+      }
+      return Movie(id, title, overview, posterPath, backdropPath, rating, releaseDate, genreIds)
+   }
 
 }

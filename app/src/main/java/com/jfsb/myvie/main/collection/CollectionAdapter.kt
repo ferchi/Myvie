@@ -32,13 +32,16 @@ class CollectionAdapter(
         viewHolder.binding.tvItemCollectionName.text = collection.name
 
         try {
-            Picasso.get()
+            Glide.with(viewHolder.itemView)
                 .load(collection.image)
+                .transform(CenterCrop())
                 .into(viewHolder.binding.rivItemCollectionPoster)
 
         } catch (e: Exception) {
-            Picasso.get()
+
+            Glide.with(viewHolder.itemView)
                 .load(R.drawable.myvie_logo)
+                .transform(CenterCrop())
                 .into(viewHolder.binding.rivItemCollectionPoster)
         }
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.collection.EditCollectionActivity"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <com.animation.animpresseffect.PressEffectCardView
+        android:id="@+id/card_riv_edit_collection"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="14dp"
+        app:cardBackgroundColor="@color/gray_transparent"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/riv_edit_collection_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:src="@mipmap/logo"/>
+    </com.animation.animpresseffect.PressEffectCardView>
+
+    <EditText
+        android:id="@+id/et_edit_collection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Collection"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_margin="16dp"
+        android:maxLength="24"
+        android:inputType="text"/>
+
+    <com.animation.animpresseffect.PressEffectButton
+        android:id="@+id/btn_edit_collection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        android:background="@drawable/tv_background_red"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textColor="@color/white"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_edit_collection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"/>
+
+
+
+</LinearLayout>
